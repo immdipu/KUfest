@@ -32,27 +32,27 @@ const AccessibleTourism = () => {
           <section className="w-1/2 py-3 items-center grid  grid-cols-2 gap-5">
             <div className="flex gap-3">
               <BsShieldFillCheck className="text-green-600 text-3xl" />{" "}
-              <span className="text-xl font-medium">Professional Guides</span>
+              <span className="text-xl font-medium">Explore Places</span>
             </div>
             <div className="flex gap-3">
               <BsShieldFillCheck className="text-green-600 text-3xl" />{" "}
-              <span className="text-xl font-medium">Professional Guides</span>
+              <span className="text-xl font-medium">Indulge in Local Flavors</span>
             </div>
             <div className="flex gap-3">
               <BsShieldFillCheck className="text-green-600 text-3xl" />{" "}
-              <span className="text-xl font-medium">Professional Guides</span>
+              <span className="text-xl font-medium">Experience Thrilling Activities</span>
             </div>
             <div className="flex gap-3">
               <BsShieldFillCheck className="text-green-600 text-3xl" />{" "}
-              <span className="text-xl font-medium">Professional Guides</span>
+              <span className="text-xl font-medium">Celebrate Cultural Fusion</span>
             </div>
             <div className="flex gap-3">
               <BsShieldFillCheck className="text-green-600 text-3xl" />{" "}
-              <span className="text-xl font-medium">Professional Guides</span>
+              <span className="text-xl font-medium">Encounter Wildlife Wonders</span>
             </div>
             <div className="flex gap-3">
               <BsShieldFillCheck className="text-green-600 text-3xl" />{" "}
-              <span className="text-xl font-medium">Professional Guides</span>
+              <span className="text-xl font-medium">Create Unforgettable Memories</span>
             </div>
           </section>
         </section>
