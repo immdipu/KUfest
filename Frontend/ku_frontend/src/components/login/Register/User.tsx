@@ -67,7 +67,9 @@ const User = () => {
 
   const formHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let name = e.target.name;
+    console.log(name);
     let value = e.target.value.toString();
+    console.log(value);
     setUsersform((prevState) => {
       return { ...prevState, [name]: value };
     });
@@ -76,6 +78,12 @@ const User = () => {
   const handleOnsubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log(usersform);
+  };
+
+  const handleGenderChange = (e: string) => {
+    setUsersform((prevState) => {
+      return { ...prevState, gender: e };
+    });
   };
 
   return (
@@ -105,7 +113,7 @@ const User = () => {
               <Input
                 id="password"
                 name="password"
-                onChange={handleOnsubmit}
+                onChange={formHandler}
                 type="text"
                 className="w-full my-1"
                 placeholder="Enter your password"
@@ -132,6 +140,7 @@ const User = () => {
               <Input
                 id="phone"
                 name="contactNumber"
+                onChange={formHandler}
                 className="w-full my-1"
                 placeholder="Enter your contact number"
               />
@@ -143,6 +152,7 @@ const User = () => {
               <Input
                 id="address"
                 name="address"
+                onChange={formHandler}
                 type="email"
                 className="w-full my-1"
                 placeholder="Enter your address"
@@ -158,7 +168,7 @@ const User = () => {
                 Choose your Gender :
               </label>
               <div className="mt-2 w-full ">
-                <Select>
+                <Select onValueChange={handleGenderChange}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Gender" />
                   </SelectTrigger>
