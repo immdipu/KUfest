@@ -1,12 +1,12 @@
 import React from "react";
 import Assistance from "@/components/assistance/Assistance";
-
 const page = () => {
+
   return (
-    <div>
-      <Assistance />
-    </div>
+    <>
+    <Assistance/>   
+    </>
   );
 };
 
-export default page;
+export default page; 
