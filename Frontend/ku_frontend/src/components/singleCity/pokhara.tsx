@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-const SingleCity = () => {
+const Pokhara = () => {
     return (
         <div>
             <div className='text-center mt-6'>
@@ -37,4 +37,4 @@ const SingleCity = () => {
     )
 }
 
-export default SingleCity
+export default Pokhara
