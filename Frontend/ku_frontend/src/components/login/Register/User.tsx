@@ -279,101 +279,16 @@ const User = () => {
               </div>
             </div>
           </section>
-          <section>
-            <div className="w-full mt-2">
-              <label htmlFor="address" className="px-1">
-                How do you want to be paid?
-              </label>
-              <div className="mt-5 pl-1">
-                <RadioGroup
-                  defaultValue="perday"
-                  className="flex flex-col gap-4"
-                >
-                  <div className="flex flex-col  space-x-2">
-                    <div className=" space-x-3 flex items-center">
-                      <RadioGroupItem
-                        value="perday"
-                        id="option-one"
-                        className="text-green-500 border-green-500"
-                      />
-                      <Label htmlFor="option-one" className="text-neutral-800">
-                        Per day
-                      </Label>
-                    </div>
-                    <p className="block mt-1 pl-5 text-neutral-500 font-light text-sm">
-                      You&rsquo;ll receive payment for each day you work as a
-                      tourist guide.
-                    </p>
-                  </div>
-                  <div className="flex flex-col  space-x-2">
-                    <div className=" space-x-3 flex items-center">
-                      <RadioGroupItem
-                        className="text-green-500 border-green-500"
-                        value="pertour"
-                        id="option-one"
-                      />
-                      <Label htmlFor="option-one" className="text-neutral-800">
-                        Per tour
-                      </Label>
-                    </div>
-                    <p className="block mt-1 pl-5 text-neutral-500 font-light text-sm">
-                      You&rsquo;ll get paid at the end of each tour or project
-                      you lead as a tourist guide
-                    </p>
-                  </div>
-                  <div className="flex flex-col  space-x-2">
-                    <div className=" space-x-3 flex items-center">
-                      <RadioGroupItem
-                        className="text-green-500 border-green-500"
-                        value="weekly"
-                        id="option-one"
-                      />
-                      <Label htmlFor="option-one" className="text-neutral-800">
-                        Weekly
-                      </Label>
-                    </div>
-                    <p className="block mt-1 pl-5 text-neutral-500 font-light text-sm">
-                      You&rsquo;ll get paid at the end of each week you work as
-                      a tourist guide.
-                    </p>
-                  </div>
-                </RadioGroup>
-                <div className="mt-10">
-                  <h3>What is the amount you will like to be paid?</h3>
-                  <div>
-                    <div className="flex  mt-3">
-                      <div className="w-full">
-                        <label htmlFor="address" className="px-1">
-                          Amount
-                        </label>
-                        <p className="text-sm mt-px font-light text-neutral-500 pl-1">
-                          Total amount the client will see on your profile
-                        </p>
-                      </div>
-
-                      <Input
-                        id="amount"
-                        type="number"
-                        className=" my-2 w-1/4"
-                        placeholder="Rs. 0.00"
-                        min={0}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
           <br />
           <br />
           <Separator />
           <br />
           <section>
-            <label htmlFor="about">Write about yourself</label>
+            <label htmlFor="about">Write your preferences</label>
             <textarea
               id="about"
               className="w-full my-2 p-5 rounded-md"
-              placeholder="Write about yourself"
+              placeholder="Mention the category of places you want to visit and adventure you prefer the most"
               rows={5}
             />
           </section>
