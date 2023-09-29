@@ -100,7 +100,7 @@ const TopNav = () => {
           </div>
           <div className="p-2">
             <Link
-              href={"/places"}
+              href={"/aboutus"}
               className="text-base font-medium hover:bg-slate-100 transition-colors duration-150 ease-linear py-2 px-3 rounded-md"
             >
               About us
