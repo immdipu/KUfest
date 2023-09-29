@@ -96,117 +96,117 @@ const User = () => {
     });
   };
 
-const countries = [
-  'Afghanistan',
-  'Albania',
-  'Algeria',
-  'Argentina',
-  'Armenia',
-  'Australia',
-  'Austria',
-  'Bahrain',
-  'Bangladesh',
-  'Belgium',
-  'Bhutan',
-  'Brazil',
-  'Bulgaria',
-  'Burundi',
-  'Cambodia',
-  'Cameroon',
-  'Canada',
-  'Central African Republic',
-  'Chile',
-  'China',
-  'Colombia',
-  'Costa Rica',
-  'Croatia',
-  'Cyprus',
-  'Denmark',
-  'Ecuador',
-  'Egypt',
-  'Ethiopia',
-  'Finland',
-  'France',
-  'Georgia',
-  'Germany',
-  'Ghana',
-  'Greece',
-  'Haiti',
-  'Hungary',
-  'Iceland',
-  'India',
-  'Indonesia',
-  'Iran',
-  'Iraq',
-  'Ireland',
-  'Italy',
-  'Jamaica',
-  'Japan',
-  'Jordan',
-  'Kazakhstan',
-  'Kenya',
-  'Lebanon',
-  'Liberia',
-  'Malaysia',
-  'Maldives',
-  'Mali',
-  'Malta',
-  'Mexico',
-  'Mongolia',
-  'Morocco',
-  'Myanmar (formerly Burma)',
-  'Nepal',
-  'Netherlands',
-  'New Zealand',
-  'Niger',
-  'Nigeria',
-  'North Korea',
-  'Norway',
-  'Oman',
-  'Pakistan',
-  'Panama',
-  'Papua New Guinea',
-  'Paraguay',
-  'Peru',
-  'Philippines',
-  'Poland',
-  'Portugal',
-  'Qatar',
-  'Romania',
-  'Russia',
-  'Saudi Arabia',
-  'Senegal',
-  'Serbia',
-  'Singapore',
-  'Slovakia',
-  'Slovenia',
-  'Somalia',
-  'South Africa',
-  'South Korea',
-  'South Sudan',
-  'Spain',
-  'Sri Lanka',
-  'Sudan',
-  'Sweden',
-  'Switzerland',
-  'Syria',
-  'Tajikistan',
-  'Tanzania',
-  'Thailand',
-  'Tunisia',
-  'Turkey',
-  'Turkmenistan',
-  'Uganda',
-  'Ukraine',
-  'United Arab Emirates',
-  'United Kingdom',
-  'United States of America',
-  'Uruguay',
-  'Venezuela',
-  'Vietnam'
-];
+  const countries = [
+    "Afghanistan",
+    "Albania",
+    "Algeria",
+    "Argentina",
+    "Armenia",
+    "Australia",
+    "Austria",
+    "Bahrain",
+    "Bangladesh",
+    "Belgium",
+    "Bhutan",
+    "Brazil",
+    "Bulgaria",
+    "Burundi",
+    "Cambodia",
+    "Cameroon",
+    "Canada",
+    "Central African Republic",
+    "Chile",
+    "China",
+    "Colombia",
+    "Costa Rica",
+    "Croatia",
+    "Cyprus",
+    "Denmark",
+    "Ecuador",
+    "Egypt",
+    "Ethiopia",
+    "Finland",
+    "France",
+    "Georgia",
+    "Germany",
+    "Ghana",
+    "Greece",
+    "Haiti",
+    "Hungary",
+    "Iceland",
+    "India",
+    "Indonesia",
+    "Iran",
+    "Iraq",
+    "Ireland",
+    "Italy",
+    "Jamaica",
+    "Japan",
+    "Jordan",
+    "Kazakhstan",
+    "Kenya",
+    "Lebanon",
+    "Liberia",
+    "Malaysia",
+    "Maldives",
+    "Mali",
+    "Malta",
+    "Mexico",
+    "Mongolia",
+    "Morocco",
+    "Myanmar (formerly Burma)",
+    "Nepal",
+    "Netherlands",
+    "New Zealand",
+    "Niger",
+    "Nigeria",
+    "North Korea",
+    "Norway",
+    "Oman",
+    "Pakistan",
+    "Panama",
+    "Papua New Guinea",
+    "Paraguay",
+    "Peru",
+    "Philippines",
+    "Poland",
+    "Portugal",
+    "Qatar",
+    "Romania",
+    "Russia",
+    "Saudi Arabia",
+    "Senegal",
+    "Serbia",
+    "Singapore",
+    "Slovakia",
+    "Slovenia",
+    "Somalia",
+    "South Africa",
+    "South Korea",
+    "South Sudan",
+    "Spain",
+    "Sri Lanka",
+    "Sudan",
+    "Sweden",
+    "Switzerland",
+    "Syria",
+    "Tajikistan",
+    "Tanzania",
+    "Thailand",
+    "Tunisia",
+    "Turkey",
+    "Turkmenistan",
+    "Uganda",
+    "Ukraine",
+    "United Arab Emirates",
+    "United Kingdom",
+    "United States of America",
+    "Uruguay",
+    "Venezuela",
+    "Vietnam",
+  ];
 
-return(
+  return (
     <div>
       <h3 className="text-center mt-16 text-xl font-semibold text-green-600">
         Join Our Inclusive Tourism Community as a Tourist
@@ -335,26 +335,26 @@ return(
           <Separator />
           <br />
           <section>
-          <div className="flex flex-col w-full ">
+            <div className="flex flex-col w-full ">
               <label htmlFor="country" className="px-1">
                 Your Country :
               </label>
               <div className="mt-2 w-full ">
-              <Select>
-               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select a country" />
-               </SelectTrigger>
-               <SelectContent>
-                 {countries.map((country) => (
-                 <SelectItem key={country} value={country}>
-                 {country}
-                 </SelectItem>
-                 ))}
-               </SelectContent>
-              </Select>
+                <Select>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a country" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {countries.map((country) => (
+                      <SelectItem key={country} value={country}>
+                        {country}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
-          </div>
-          <br/>
+            </div>
+            <br />
             <div>
               <label htmlFor="gender" className="px-1">
                 Add languages you can speak :
@@ -416,96 +416,6 @@ return(
                 </RadioGroup>
               </div>
             </div>
-            <div className="mt-10">
-              <div>
-                <div className="flex  mt-3">
-                  <div className="w-full">
-                    <label htmlFor="address" className="px-1">
-                      Total no of visitor
-                    </label>
-                    <Input
-                      id="member"
-                      type="number"
-                      className=" my-2 w-1/2"
-                      placeholder="0"
-                      min={2}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section>
-            <div className="w-full mt-2">
-              <label htmlFor="address" className="px-1">
-                How do you want to be paid?
-              </label>
-              <div className="mt-5 pl-1">
-                <RadioGroup
-                  defaultValue="perday"
-                  className="flex flex-col gap-4"
-                >
-                  <div className="flex flex-col  space-x-2">
-                    <div className=" space-x-3 flex items-center">
-                      <RadioGroupItem
-                        value="perday"
-                        id="option-one"
-                        className="text-green-500 border-green-500"
-                      />
-                      <Label htmlFor="option-one" className="text-neutral-800">
-                        Per day
-                      </Label>
-                    </div>
-                    <p className="block mt-1 pl-5 text-neutral-500 font-light text-sm">
-                      You&rsquo;ll receive payment for each day you work as a
-                      tourist guide.
-                    </p>
-                  </div>
-                  <div className="flex flex-col  space-x-2">
-                    <div className=" space-x-3 flex items-center">
-                      <RadioGroupItem
-                        className="text-green-500 border-green-500"
-                        value="pertour"
-                        id="option-one"
-                      />
-                      <Label htmlFor="option-one" className="text-neutral-800">
-                        Per tour
-                      </Label>
-                    </div>
-                    <p className="block mt-1 pl-5 text-neutral-500 font-light text-sm">
-                      You&rsquo;ll get paid at the end of each tour or project
-                      you lead as a tourist guide
-                    </p>
-                  </div>
-                  <div className="flex flex-col  space-x-2">
-                    <div className=" space-x-3 flex items-center">
-                      <RadioGroupItem
-                        className="text-green-500 border-green-500"
-                        value="weekly"
-                        id="option-one"
-                      />
-                      <Label htmlFor="option-one" className="text-neutral-800">
-                        Weekly
-                      </Label>
-                    </div>
-                    <p className="block mt-1 pl-5 text-neutral-500 font-light text-sm">
-                      You&rsquo;ll get paid at the end of each week you work as
-                      a tourist guide.
-                    </p>
-                  </div>
-                </RadioGroup>
-                <div className="mt-10">
-                  <h3>What is the amount you will like to be paid?</h3>
-                  <div>
-                    <div className="flex  mt-3">
-                      <div className="w-full">
-                        <label htmlFor="address" className="px-1">
-                          Amount
-                        </label>
-                        <p className="text-sm mt-px font-light text-neutral-500 pl-1">
-                          Total amount the client will see on your profile
-                        </p>
-                      </div>
 
                       <Input
                         id="amount"
@@ -518,7 +428,7 @@ return(
                   </div>
                 </div>
               </div>
-            </div>
+            )}
           </section>
           <br />
 
