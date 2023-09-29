@@ -1,15 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import axios, { AxiosInstance, AxiosStatic } from "axios";
-
-export const axiosInstance = (): AxiosInstance => {
-  const URL = process.env.NEXT_PUBLIC_USER_URL;
-  const token = localStorage.getItem("token");
-  return axios.create({
-    baseURL: URL,
-    headers: { Authorization: `Bearer ${token}` },
-  });
-};
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

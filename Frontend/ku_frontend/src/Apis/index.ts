@@ -9,4 +9,10 @@ const userApis = {
     );
     return res.data;
   },
+  GetAllCities: async () => {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_USER_URL}/api/cities`
+    );
+    return res.data;
+  },
 };
