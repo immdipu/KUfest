@@ -10,11 +10,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Calendar } from "@/components/ui/calendar";
-import { format } from "date-fns";
+import { format, set } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LanguageList } from "@/lib/utils";
+import { language } from "@/types/UserForm";
+
 import {
   Popover,
   PopoverContent,
@@ -26,6 +28,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { UserForm } from "@/types/UserForm";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
+import clsx from "clsx";
 
 interface Props {
   value: string;
@@ -42,34 +45,32 @@ const initialUserForm: UserForm = {
   gender: undefined,
   language: undefined,
   country: undefined,
-  state: undefined,
-  city: undefined,
-  pinCode: undefined,
+  numberOfvisitors: undefined,
   termsAndConditions: undefined,
   profilePicture: undefined,
-  experience: undefined,
-  paymentMode: {
-    method: undefined,
-  },
+  about: undefined,
+  // experience: undefined,
+  // paymentMode: {
+  //   method: undefined,
+  // },
 };
 
 const User = () => {
   const [date, setDate] = React.useState<Date | undefined>();
-  const [languages, setLanguages] = useState<Props[]>([]);
+
   const [usersform, setUsersform] = useState<UserForm | undefined>(
     initialUserForm
   );
 
   const handleSelectChange = (e: any) => {
-    console.log(e);
-    setLanguages(e);
+    setUsersform((prevState) => {
+      return { ...prevState, language: e };
+    });
   };
 
   const formHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let name = e.target.name;
-    console.log(name);
     let value = e.target.value.toString();
-    console.log(value);
     setUsersform((prevState) => {
       return { ...prevState, [name]: value };
     });
@@ -77,7 +78,10 @@ const User = () => {
 
   const handleOnsubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(usersform);
+    setUsersform((prevState) => {
+      if (!date) return { ...prevState };
+      return { ...prevState, dateOfBirth: date.toString() };
+    });
   };
 
   const handleGenderChange = (e: string) => {
@@ -85,6 +89,122 @@ const User = () => {
       return { ...prevState, gender: e };
     });
   };
+
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setUsersform((prevState) => {
+      return { ...prevState, about: e.target.value };
+    });
+  };
+
+  const countries = [
+    "Afghanistan",
+    "Albania",
+    "Algeria",
+    "Argentina",
+    "Armenia",
+    "Australia",
+    "Austria",
+    "Bahrain",
+    "Bangladesh",
+    "Belgium",
+    "Bhutan",
+    "Brazil",
+    "Bulgaria",
+    "Burundi",
+    "Cambodia",
+    "Cameroon",
+    "Canada",
+    "Central African Republic",
+    "Chile",
+    "China",
+    "Colombia",
+    "Costa Rica",
+    "Croatia",
+    "Cyprus",
+    "Denmark",
+    "Ecuador",
+    "Egypt",
+    "Ethiopia",
+    "Finland",
+    "France",
+    "Georgia",
+    "Germany",
+    "Ghana",
+    "Greece",
+    "Haiti",
+    "Hungary",
+    "Iceland",
+    "India",
+    "Indonesia",
+    "Iran",
+    "Iraq",
+    "Ireland",
+    "Italy",
+    "Jamaica",
+    "Japan",
+    "Jordan",
+    "Kazakhstan",
+    "Kenya",
+    "Lebanon",
+    "Liberia",
+    "Malaysia",
+    "Maldives",
+    "Mali",
+    "Malta",
+    "Mexico",
+    "Mongolia",
+    "Morocco",
+    "Myanmar (formerly Burma)",
+    "Nepal",
+    "Netherlands",
+    "New Zealand",
+    "Niger",
+    "Nigeria",
+    "North Korea",
+    "Norway",
+    "Oman",
+    "Pakistan",
+    "Panama",
+    "Papua New Guinea",
+    "Paraguay",
+    "Peru",
+    "Philippines",
+    "Poland",
+    "Portugal",
+    "Qatar",
+    "Romania",
+    "Russia",
+    "Saudi Arabia",
+    "Senegal",
+    "Serbia",
+    "Singapore",
+    "Slovakia",
+    "Slovenia",
+    "Somalia",
+    "South Africa",
+    "South Korea",
+    "South Sudan",
+    "Spain",
+    "Sri Lanka",
+    "Sudan",
+    "Sweden",
+    "Switzerland",
+    "Syria",
+    "Tajikistan",
+    "Tanzania",
+    "Thailand",
+    "Tunisia",
+    "Turkey",
+    "Turkmenistan",
+    "Uganda",
+    "Ukraine",
+    "United Arab Emirates",
+    "United Kingdom",
+    "United States of America",
+    "Uruguay",
+    "Venezuela",
+    "Vietnam",
+  ];
 
   return (
     <div>
@@ -215,6 +335,26 @@ const User = () => {
           <Separator />
           <br />
           <section>
+            <div className="flex flex-col w-full ">
+              <label htmlFor="country" className="px-1">
+                Your Country :
+              </label>
+              <div className="mt-2 w-full ">
+                <Select>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a country" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {countries.map((country) => (
+                      <SelectItem key={country} value={country}>
+                        {country}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            <br />
             <div>
               <label htmlFor="gender" className="px-1">
                 Add languages you can speak :
@@ -224,7 +364,7 @@ const User = () => {
                   name="Language"
                   options={LanguageList}
                   onChange={handleSelectChange}
-                  value={languages}
+                  value={usersform?.language}
                   isMulti
                 />
               </div>
@@ -241,13 +381,18 @@ const User = () => {
               </label>
               <div className="mt-5 pl-1">
                 <RadioGroup
-                  defaultValue="perday"
+                  defaultValue="solo"
                   className="flex flex-col gap-4"
+                  onValueChange={(e) => {
+                    setUsersform((prevState) => {
+                      return { ...prevState, tourType: e };
+                    });
+                  }}
                 >
                   <div className="flex flex-col  space-x-2">
                     <div className=" space-x-3 flex items-center">
                       <RadioGroupItem
-                        value="perday"
+                        value="soloTravel"
                         id="option-one"
                         className="text-green-500 border-green-500"
                       />
@@ -260,7 +405,7 @@ const User = () => {
                     <div className=" space-x-3 flex items-center">
                       <RadioGroupItem
                         className="text-green-500 border-green-500"
-                        value="pertour"
+                        value="group"
                         id="option-one"
                       />
                       <Label htmlFor="option-one" className="text-neutral-800">
@@ -271,121 +416,44 @@ const User = () => {
                 </RadioGroup>
               </div>
             </div>
-            <div className="mt-10">
-              <div>
-                <div className="flex  mt-3">
-                  <div className="w-full">
-                    <label htmlFor="address" className="px-1">
-                      Total no of visitor
-                    </label>
-                    <Input
-                      id="member"
-                      type="number"
-                      className=" my-2 w-1/2"
-                      placeholder="0"
-                      min={2}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section>
-            <div className="w-full mt-2">
-              <label htmlFor="address" className="px-1">
-                How do you want to be paid?
-              </label>
-              <div className="mt-5 pl-1">
-                <RadioGroup
-                  defaultValue="perday"
-                  className="flex flex-col gap-4"
-                >
-                  <div className="flex flex-col  space-x-2">
-                    <div className=" space-x-3 flex items-center">
-                      <RadioGroupItem
-                        value="perday"
-                        id="option-one"
-                        className="text-green-500 border-green-500"
-                      />
-                      <Label htmlFor="option-one" className="text-neutral-800">
-                        Per day
-                      </Label>
-                    </div>
-                    <p className="block mt-1 pl-5 text-neutral-500 font-light text-sm">
-                      You&rsquo;ll receive payment for each day you work as a
-                      tourist guide.
-                    </p>
-                  </div>
-                  <div className="flex flex-col  space-x-2">
-                    <div className=" space-x-3 flex items-center">
-                      <RadioGroupItem
-                        className="text-green-500 border-green-500"
-                        value="pertour"
-                        id="option-one"
-                      />
-                      <Label htmlFor="option-one" className="text-neutral-800">
-                        Per tour
-                      </Label>
-                    </div>
-                    <p className="block mt-1 pl-5 text-neutral-500 font-light text-sm">
-                      You&rsquo;ll get paid at the end of each tour or project
-                      you lead as a tourist guide
-                    </p>
-                  </div>
-                  <div className="flex flex-col  space-x-2">
-                    <div className=" space-x-3 flex items-center">
-                      <RadioGroupItem
-                        className="text-green-500 border-green-500"
-                        value="weekly"
-                        id="option-one"
-                      />
-                      <Label htmlFor="option-one" className="text-neutral-800">
-                        Weekly
-                      </Label>
-                    </div>
-                    <p className="block mt-1 pl-5 text-neutral-500 font-light text-sm">
-                      You&rsquo;ll get paid at the end of each week you work as
-                      a tourist guide.
-                    </p>
-                  </div>
-                </RadioGroup>
-                <div className="mt-10">
-                  <h3>What is the amount you will like to be paid?</h3>
-                  <div>
-                    <div className="flex  mt-3">
-                      <div className="w-full">
-                        <label htmlFor="address" className="px-1">
-                          Amount
-                        </label>
-                        <p className="text-sm mt-px font-light text-neutral-500 pl-1">
-                          Total amount the client will see on your profile
-                        </p>
-                      </div>
 
+            {usersform?.tourType === "group" && (
+              <div className="mt-10">
+                <div>
+                  <div className="flex  mt-3">
+                    <div className="w-full">
+                      <label htmlFor="address" className="px-1">
+                        Total no of visitor
+                      </label>
                       <Input
-                        id="amount"
+                        id="member"
                         type="number"
-                        className=" my-2 w-1/4"
-                        placeholder="Rs. 0.00"
-                        min={0}
+                        name="numberOfvisitors"
+                        className=" my-2 w-1/2"
+                        placeholder="0"
+                        onChange={formHandler}
+                        min={2}
                       />
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
           </section>
           <br />
-          <br />
+
           <Separator />
           <br />
+
           <section>
-            <label htmlFor="about">Write about yourself</label>
+            <label htmlFor="about">Write your preferences</label>
             <textarea
               id="about"
               className="w-full my-2 p-5 rounded-md"
-              placeholder="Write about yourself"
+              placeholder="Mention the category of places you want to visit and adventure you prefer the most"
               rows={5}
+              onChange={handleTextareaChange}
+              name="experience"
             />
           </section>
           <br />
@@ -394,7 +462,13 @@ const User = () => {
           <br />
           <section>
             <div className="flex  items-center gap-3  px-5">
-              <Checkbox />{" "}
+              <Checkbox
+                onCheckedChange={(e) => {
+                  setUsersform((prevState) => {
+                    return { ...prevState, termsAndConditions: e as boolean };
+                  });
+                }}
+              />{" "}
               <p className="text-neutral-700 text-sm">
                 I certify that i am atleast 18 years old and i agree to the{" "}
                 <Link
@@ -417,7 +491,12 @@ const User = () => {
           <section className="mt-10  flex  ">
             <Button
               variant="default"
-              className="bg-neutral-700 ml-5 w-[25%] px-5"
+              className={clsx(
+                "bg-neutral-700 ml-5 w-[25%] px-5",
+                !usersform?.termsAndConditions
+                  ? "pointer-events-auto opacity-50"
+                  : "pointer-events-auto opacity-100"
+              )}
             >
               submit
             </Button>

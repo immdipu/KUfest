@@ -87,7 +87,7 @@ const SupportAssistance = () => {
               that your travel experiences are enjoyable, stress-free, and
               memorable. Start your journey to inclusive travel today.
             </p>
-            <Link href={"/caregiver"} className="mt-5">
+            <Link href={"/tourism"} className="mt-5">
               <button className="bg-green-500 text-white px-4 rounded-full py-2 mt-5">
                 Learn More
               </button>
