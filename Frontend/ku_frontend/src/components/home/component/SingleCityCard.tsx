@@ -5,16 +5,18 @@ const SingleCityCard = ({
   image,
   description,
   title,
+  id,
 }: {
   image: string;
   description: string;
   title: string;
+  id: number;
 }) => {
   return (
     <Link
-      href={"/place/kathamndu"}
-      className="flex h-96 group  relative w-72 overflow-hidden shrink-0 rounded-2xl "
-    >
+      href={`/places/${id}`}
+
+      className="flex h-96 group  relative w-72 overflow-hidden shrink-0 rounded-2xl">
       <img
         src={image}
         alt="kathmandu image"

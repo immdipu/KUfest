@@ -4,6 +4,7 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 const data = [
   {
+    id: 1,
     image:
       "https://www.mountainiq.com/wp-content/uploads/2023/05/things-to-do-in-kathmandu.jpg",
     title: "Kathmandu",
@@ -11,12 +12,14 @@ const data = [
       "Nepal's capital, is a vibrant city with a rich history. Explore its ancient temples, bustling markets, and Swayambhunath Stupa. ",
   },
   {
+    id: 2,
     title: "Pokhara",
     description:
       "known for its stunning lakes and mountain views, is the gateway to the Annapurna Circuit. Enjoy boating on Phewa Lake and visit the World Peace Pagoda.   ",
     image: "https://wallpapercave.com/wp/wp7247098.jpg",
   },
   {
+    id: 3,
     title: "Lalitpur",
     description:
       "This historic city is known for its well-preserved architecture and ancient temples.Patan Durbar Square is a major attraction, showcasing traditional Newari architecture.   ",
@@ -24,6 +27,7 @@ const data = [
       "https://www.reddit.com/media?url=https%3A%2F%2Fi.redd.it%2F5lidjv3z7te61.jpg",
   },
   {
+    id: 4,
     title: "Nagarkot",
     description:
       " A hill station located near Kathmandu, Nagarkot offers breathtaking views of the Himalayan mountain range, including Mount Everest, especially at sunrise and sunset.  ",
@@ -31,6 +35,7 @@ const data = [
       "https://www.viator.com/tours/Kathmandu/Nagarkot-Sunrise-and-Refreshing-Hike-to-Changu-Narayan-Temple-from-Kathmandu/d5109-66561P18",
   },
   {
+    id: 5,
     title: "Gosaikunda",
     description:
       "This high-altitude alpine lake is a popular trekking destination in the Langtang National Park region. The lake is considered sacred and is surrounded by stunning mountain scenery.",
@@ -38,6 +43,7 @@ const data = [
       "https://c4.wallpaperflare.com/wallpaper/736/721/212/gosaikunda-nepal-wallpaper-preview.jpg",
   },
   {
+    id: 6,
     title: "Chitwan",
     description:
       "Chitwan National Park is a UNESCO World Heritage Site and one of Nepal's premier wildlife destinations.Visitors can go on jungle safaris to spot rhinoceroses, tigers, elephants, and a wide variety of bird species. ",
@@ -45,6 +51,7 @@ const data = [
       "https://uploads-ssl.webflow.com/576fd5a8f192527e50a4b95c/5c337a21121342bd3505299a_top%20things%20to%20do%20in%20Chitwan-p-800.jpeg",
   },
   {
+    id: 7,
     title: "Lumbini",
     description:
       "The birthplace of Siddhartha Gautama, who later became Buddha, Lumbini is a sacred pilgrimage site for Buddhists.The Mayadevi Temple and Ashoka Pillar are among its important landmarks.",
@@ -52,6 +59,7 @@ const data = [
       "https://en.wikipedia.org/wiki/Lumbini#/media/File:BRP_Lumbini_Mayadevi_temple.jpg",
   },
   {
+    id: 8,
     title: "Mustang",
     description:
       "A mystical desert in the Himalayas, where ancient monasteries and dramatic landscapes blend to create an enchanting realm of culture and adventure.",
@@ -59,6 +67,7 @@ const data = [
       "https://www.adventurehimalayacircuit.com/blog/wp-content/uploads/2022/11/Upper-Mustang-Trekking-Information.jpg",
   },
   {
+    id: 9,
     title: "Dharan",
     description:
       "Located in eastern Nepal, Dharan is known for its pleasant climate, tea gardens, and proximity to the Koshi Tappu Wildlife Reserve.",
@@ -85,10 +94,10 @@ const ExplorePlaces = () => {
   };
 
   return (
-    <div className="my-20">
+    <div id="places" className="my-20">
       <div>
         <h1 className="text-3xl font-semibold  ml-16 border-l-8 text-green-500 border-green-400 pl-2">
-          Explore Nepal Popular Places
+          Explore Nepal Pop
         </h1>
       </div>
       <section className=" mt-10 flex px-3">
@@ -99,9 +108,10 @@ const ExplorePlaces = () => {
           <MdKeyboardArrowLeft className="text-2xl text-_light_white" />
         </div>
         <div className="flex gap-5 overflow-y-auto  popularCities mx-auto ">
-          {data.map((item, index) => (
+          {data.map((item) => (
             <SingleCityCard
-              key={index}
+              key={item.id}
+              id={item.id}
               title={item.title}
               description={item.description}
               image={item.image}

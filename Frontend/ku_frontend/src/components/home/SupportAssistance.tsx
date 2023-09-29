@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const SupportAssistance = () => {
   return (
-    <div className="bg-neutral-200 py-10">
+    <div id="caregiver" className="bg-neutral-200 py-10">
       <div>
         <h1 className="text-3xl font-semibold text-center ml-16 border-l-8 text-green-500  pl-2">
           Support & Assistance

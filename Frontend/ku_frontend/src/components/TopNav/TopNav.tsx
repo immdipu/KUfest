@@ -17,37 +17,37 @@ import Link from "next/link";
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Explore Places",
-    href: "/places",
+    href: "#places",
     description:
       "Explore places in Nepal. Find the best places to visit in Nepal. Discover the best of Nepal.",
   },
   {
     title: "Caregiver Services",
-    href: "/caregiver",
+    href: "#caregiver",
     description:
       "Compassionate Care at Your Fingertips - Connect with experienced caregivers to support you or your loved ones.",
   },
   {
     title: "Assistance on Demand",
-    href: "/assistance",
+    href: "#assistance",
     description:
       "On-Demand Help and Support - Instantly connect with professionals for daily tasks and emergencies.",
   },
   {
     title: "Accessible Transportation",
-    href: "/transportation",
+    href: "#transportation",
     description:
       "Seamless Travel for All - Find and book wheelchair-accessible transportation, ensuring safe and convenient journeys.",
   },
   {
     title: "Professional Guides",
-    href: "/guides",
+    href: "#guides",
     description:
       "Connecting You to Experts - Easily connect with professionals for essential services and tourist guides.",
   },
   {
     title: "Rating System",
-    href: "/rating-system",
+    href: "3rating-system",
     description:
       "Community-Powered Reviews - Share and access insights on accessibility and services for the disabled community.",
   },
@@ -92,7 +92,7 @@ const TopNav = () => {
           </div>
           <div className="p-2">
             <Link
-              href={"/places"}
+              href="#places"
               className="text-base hover:bg-slate-100 transition-colors duration-150 ease-linear py-2 px-3 rounded-md font-medium"
             >
               Explore Places
