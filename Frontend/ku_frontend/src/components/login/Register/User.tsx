@@ -105,6 +105,7 @@ const User = () => {
               <Input
                 id="password"
                 name="password"
+                onChange={handleOnsubmit}
                 type="text"
                 className="w-full my-1"
                 placeholder="Enter your password"
