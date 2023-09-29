@@ -107,7 +107,7 @@ const Home = () => {
                 show === "first" && "bg-neutral-800 bg-opacity-70"
               )}
             >
-              Nepal, Where Ordinary <br /> Becomes Extraordinary
+              Inclusion makes every journey more enriching
             </button>
             <button
               onClick={() => setShow("second")}
@@ -116,7 +116,7 @@ const Home = () => {
                 show === "second" && "bg-neutral-800 bg-opacity-70"
               )}
             >
-              Uncover Hidden Gems in Nepal
+              Unlock endless travel possibilities
             </button>
             <button
               onClick={() => setShow("third")}
@@ -125,7 +125,7 @@ const Home = () => {
                 show === "third" && "bg-neutral-800 bg-opacity-70"
               )}
             >
-              Explore 360&rsquo; Views of Nepal&rsquo;s Scenery
+              Embrace the world's beauty through accesible exploration
             </button>
           </section>
         </section>
