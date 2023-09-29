@@ -2,9 +2,8 @@ const express = require("express");
 // const cors = require('cors');
 // require('dotenv').config();
 const fileUpload = require("express-fileupload");
-const {dataFunction}= require("./data");
 require("./config/database");
-const tourist_route = require("./route/tourist.js");
+const tourist_route = require("./route/tourist");
 const guide_route = require("./route/guide");
 const city_route = require("./route/city");
 const places_route = require("./route/places");
@@ -82,5 +81,3 @@ app.use((err,req,res,next) => {
 app.listen(8010, () => {
     console.log("server created");
 })
- 
-dataFunction()
