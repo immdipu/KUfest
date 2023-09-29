@@ -44,7 +44,7 @@ const loginTourist = (async(req, res) => {
          
          //hiding password:
          let obj = {...user.toObject()}
-         var token = jwt.sign(obj, process.env.JWT_SECRET);
+         var token = jwt.sign(obj, 'fallback_secret_key');
          delete obj.password
  
  
@@ -71,7 +71,7 @@ const loginGuide = (async(req, res) => {
         
         //hiding password:
         let obj = {...user.toObject()}
-        var token = jwt.sign(obj, process.env.JWT_SECRET);
+        var token = jwt.sign(obj, 'fallback_secret_key');
         delete obj.password
 
 
@@ -85,11 +85,33 @@ const loginGuide = (async(req, res) => {
    
   
 })
+const getAllGuide = (async(req, res, next) => {
+    
+    try {
+        const guide = await Guide.find();
+        res.status(200).json({ success: true, data: guide });
+    } catch (error) {
+        next(error);
+    }
+   
+ })
 
+ const getAllTourist = (async(req, res, next) => {
+    
+    try {
+        const tourist = await Tourist.find();
+        res.status(200).json({ success: true, data: tourist });
+    } catch (error) {
+        next(error);
+    }
+   
+ })
 
 module.exports = {
     signupTourist,
     signupGuide,
     loginTourist,
-    loginGuide
+    loginGuide,
+    getAllGuide,
+    getAllTourist,
 };
