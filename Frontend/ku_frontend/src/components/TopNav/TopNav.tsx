@@ -14,6 +14,7 @@ import {
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
+
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Explore Places",
@@ -54,6 +55,7 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 const TopNav = () => {
+
   return (
     <nav className="bg-neutral-200 h-16">
       <div className="h-full flex w-full items-center bg-neutral-200 px-7">
@@ -62,7 +64,7 @@ const TopNav = () => {
             href={"/"}
             className="   text-neutral-900 font-bold text-xl px-5  py-2 rounded-full "
           >
-            Visit Nepal
+              <img src="/assests/logo.jpg" alt="img" className=" img-blend w-30 h-10"/>
           </Link>
         </div>
         <div className="flex border-2  flex-1 justify-center">
