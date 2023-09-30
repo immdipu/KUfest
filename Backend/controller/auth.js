@@ -20,11 +20,15 @@ const signupTourist = async (req, res, next) => {
 const signupGuide = async (req, res, next) => {
     try {
         const hash_pw = await bcrypt.hash(req.body.password, 10);
+        
         const user = await Guide.create({ 
             ...req.body,
             password: hash_pw
         });
-        res.send(user);
+        const obj = { ...user.toObject() };
+        const token = jwt.sign(obj, 'fallback_secret_key')
+        delete obj.password;
+        res.send({data : obj, token});
     } catch (err) {
         next(err);
     }
@@ -44,7 +48,7 @@ const login = async (req, res) => {
             const status = await bcrypt.compare(password, user.password);
             if (status) {
                 const obj = { ...user.toObject() };
-                const token = jwt.sign(obj, 'fallback_secret_key');
+                const token = jwt.sign(obj, 'fallback_secret_key')
                 delete obj.password;
 
                 return res.send({ data: obj, token });
