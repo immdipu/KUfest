@@ -1,13 +1,51 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useEffect } from "react";
+import Map from "./modal/Map";
+import SelectInput from "react-select";
+import Modal from "./modal/Modal";
 
-const SingleAssistanceCard = () => {
+interface assistanceCardTypes {
+  id: number;
+  image: string;
+  name: string;
+  contact: string;
+  address: string;
+  gender: string;
+  language: string;
+  experience: string;
+  rate: number;
+  biography: string;
+}
+
+const SingleAssistanceCard: React.FC<assistanceCardTypes> = ({
+  address,
+  biography,
+  contact,
+  experience,
+  gender,
+  image,
+  language,
+  name,
+  rate,
+  id,
+}) => {
+  const [showModal, setShowModal] = React.useState(false);
+
+  useEffect(() => {
+    if (showModal) {
+      document.body.classList.add("noscroll");
+    } else {
+      document.body.classList.remove("noscrolll");
+    }
+  }, [showModal]);
+
   return (
-    <div className="bg-neutral-200 bg-opacity-40 rounded-md w-10/12 min-h-96 mx-auto px-7 py-8">
+    <div className="bg-neutral-200 hover:bg-opacity-80 duration-200 ease-linear transition-colors bg-opacity-40 rounded-md w-10/12 min-h-96 mx-auto px-7 py-8">
       <section className="flex gap-4 ">
         <div>
           <img
-            src="https://scontent.fktm3-1.fna.fbcdn.net/v/t39.30808-1/311499637_2277474755755372_7003523239515569919_n.jpg?stp=dst-jpg_s320x320&_nc_cat=109&ccb=1-7&_nc_sid=fe8171&_nc_ohc=kEFB1D0rjxoAX-toY1_&_nc_ht=scontent.fktm3-1.fna&oh=00_AfBV_ayq0-y_69lMzna8v0NnViB3TpS_VzlK5yfM0CC7bQ&oe=651BD204"
+            src={image}
             alt="singleProfile"
             className="w-56 h-60 object-cover rounded-md"
           />
@@ -18,11 +56,16 @@ const SingleAssistanceCard = () => {
               <span className="text-lg text-neutral-900">Name : </span>
 
               <span className="text-neutral-900 text-base font-normal">
-                Ramesh Karki
+                {name}
               </span>
             </div>
             <div className="mr-10">
-              <button className="bg-green-500  text-white font-normal text-lg tracking-wide rounded-xl px-3 py-2">
+              <button
+                onClick={() => {
+                  setShowModal(true);
+                }}
+                className="bg-green-500  text-white font-normal text-lg tracking-wide rounded-xl px-3 py-2"
+              >
                 Hire Me
               </button>
             </div>
@@ -30,38 +73,38 @@ const SingleAssistanceCard = () => {
           <div className="font-medium flex justify-between w-fit items-center">
             <span className=" text-base text-neutral-900">Contact : </span>
             <span className="text-neutral-700 text-base font-normal px-2">
-              +9779807202691{" "}
+              {contact}
             </span>
           </div>
 
           <div className="font-medium mt-2 flex justify-between w-fit items-center">
             <span className=" text-base text-neutral-900">Address : </span>
             <span className="text-neutral-700 font-normal text-base font-norma px-2">
-              Kathmandu, New Banweshwor{" "}
+              {address}
             </span>
           </div>
           <div className="font-medium mt-2 flex justify-between w-fit items-center">
             <span className=" text-base text-neutral-900">Gender : </span>
             <span className="text-neutral-700 font-normal text-base font-norma px-2">
-              Male
+              {gender}
             </span>
           </div>
           <div className="font-medium mt-2 flex justify-between w-fit items-center">
             <span className=" text-base text-neutral-900">Languages : </span>
             <span className="text-neutral-700 font-normal text-base font-norma px-2">
-              English, Nepali, Hindi, Newari,
+              {language}
             </span>
           </div>
           <div className="font-medium mt-2 flex justify-between w-fit items-center">
             <span className=" text-base text-neutral-900">Experiences : </span>
             <span className="text-neutral-700 font-normal text-base font-norma px-2">
-              2 years
+              {experience}
             </span>
           </div>
           <div className="font-medium mt-2 flex justify-between w-fit items-center">
             <span className=" text-base text-neutral-900">Rate : </span>
             <span className="text-neutral-700 font-normal text-base font-norma px-2">
-              Rs. 5000/month
+              Rs. {rate}
             </span>
           </div>
         </section>
@@ -69,10 +112,7 @@ const SingleAssistanceCard = () => {
       <section className="mt-10 px-3">
         <h3 className="text-neutral-900 font-semibold text-xl ">Biography</h3>
         <section className="mt-3">
-          <p className="text-neutral-700">
-            Hello! I am Ramesh Karki, and I am incredibly passionate about
-            making a positive impact in the lives of people with disabilities
-          </p>
+          <p className="text-neutral-700">{biography}</p>
           <h4 className="py-3 font-semibold text-neutral-900">
             Why I Do What I Do ?
           </h4>
@@ -86,6 +126,7 @@ const SingleAssistanceCard = () => {
           </p>
         </section>
       </section>
+      {showModal && <Modal rate={rate} key={id} setShowModal={setShowModal} />}
     </div>
   );
 };

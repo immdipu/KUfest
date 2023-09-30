@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { useMutation } from "@tanstack/react-query";
 import {
   Select,
   SelectContent,
@@ -15,6 +16,7 @@ import { Calendar as CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LanguageList } from "@/lib/utils";
+import clsx from "clsx";
 import {
   Popover,
   PopoverContent,
@@ -23,7 +25,7 @@ import {
 import SelectInput from "react-select";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { UserForm } from "@/types/UserForm";
+import { GuideForm } from "@/types/UserForm";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 
@@ -32,16 +34,62 @@ interface Props {
   label: string;
 }
 
+const initialUserForm: GuideForm = {
+  fullName: undefined,
+  email: undefined,
+  password: undefined,
+  contactNumber: undefined,
+  address: undefined,
+  dateOfBirth: undefined,
+  gender: undefined,
+  language: undefined,
+  tourType: undefined,
+  termsAndConditions: undefined,
+  profilePicture: undefined,
+  about: undefined,
+  experience: undefined,
+  paymentType: undefined,
+  rate: undefined,
+};
+
 const Guides = () => {
   const [date, setDate] = React.useState<Date | undefined>();
   const [languages, setLanguages] = useState<Props[]>([]);
-  const [usersform, setUsersform] = useState<UserForm | null>();
+  const [Guidesform, setGuidesform] = useState<GuideForm>(initialUserForm);
 
   const handleSelectChange = (e: any) => {
     console.log(e);
     setLanguages(e);
   };
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {};
+
+  const handleGenderChange = (e: string) => {
+    setGuidesform((prevState) => {
+      return { ...prevState, gender: e };
+    });
+  };
+
+  const formHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let name = e.target.name;
+    let value = e.target.value.toString();
+    setGuidesform((prevState) => {
+      return { ...prevState, [name]: value };
+    });
+  };
+
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setGuidesform((prevState) => {
+      return { ...prevState, about: e.target.value };
+    });
+  };
+
+  const handleOnsubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setGuidesform((prevState) => {
+      if (!date) return { ...prevState };
+      return { ...prevState, dateOfBirth: date.toString() };
+    });
+    console.log();
+  };
 
   return (
     <div>
@@ -49,7 +97,7 @@ const Guides = () => {
         Join Our Inclusive Tourism Community as a Guide
       </h3>
       <section className="max-w-4xl mb-10 bg-neutral-100 w-full mx-auto px-10 py-16 rounded-3xl mt-8">
-        <form>
+        <form onSubmit={handleOnsubmit}>
           <section className="flex space-x-12">
             <div className="w-full">
               <label htmlFor="name" className="px-1">
@@ -57,6 +105,9 @@ const Guides = () => {
               </label>
               <Input
                 id="name"
+                type="text"
+                onChange={formHandler}
+                name="fullName"
                 className="w-full my-1"
                 placeholder="Enter your full Name"
               />
@@ -67,7 +118,9 @@ const Guides = () => {
               </label>
               <Input
                 id="password"
+                onChange={formHandler}
                 type="text"
+                name="password"
                 className="w-full my-1"
                 placeholder="Enter your password"
               />
@@ -81,6 +134,7 @@ const Guides = () => {
               <Input
                 id="email"
                 type="email"
+                onChange={formHandler}
                 className="w-full my-1"
                 placeholder="Enter your email (optional)"
               />
@@ -91,6 +145,9 @@ const Guides = () => {
               </label>
               <Input
                 id="phone"
+                type="number"
+                onChange={formHandler}
+                name="contactNumber"
                 className="w-full my-1"
                 placeholder="Enter your contact number"
               />
@@ -102,6 +159,8 @@ const Guides = () => {
               <Input
                 id="address"
                 type="email"
+                onChange={formHandler}
+                name="address"
                 className="w-full my-1"
                 placeholder="Enter your address"
               />
@@ -116,7 +175,7 @@ const Guides = () => {
                 Choose your Gender :
               </label>
               <div className="mt-2 w-full">
-                <Select>
+                <Select onValueChange={handleGenderChange}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Gender" />
                   </SelectTrigger>
@@ -172,7 +231,7 @@ const Guides = () => {
                   name="Language"
                   options={LanguageList}
                   onChange={handleSelectChange}
-                  value={languages}
+                  value={Guidesform.language}
                   isMulti
                 />
               </div>
@@ -202,6 +261,11 @@ const Guides = () => {
                 <RadioGroup
                   defaultValue="perday"
                   className="flex flex-col gap-4"
+                  onValueChange={(e) => {
+                    setGuidesform((prevState) => {
+                      return { ...prevState, paymentType: e };
+                    });
+                  }}
                 >
                   <div className="flex flex-col  space-x-2">
                     <div className=" space-x-3 flex items-center">
@@ -267,6 +331,8 @@ const Guides = () => {
 
                       <Input
                         id="amount"
+                        name="rate"
+                        onChange={formHandler}
                         type="number"
                         className=" my-2 w-1/4"
                         placeholder="Rs. 0.00"
@@ -289,6 +355,7 @@ const Guides = () => {
               className="w-full my-2 p-5 rounded-md"
               placeholder="Write about yourself"
               rows={5}
+              onChange={handleTextareaChange}
             />
           </section>
           <br />
@@ -297,7 +364,13 @@ const Guides = () => {
           <br />
           <section>
             <div className="flex  items-center gap-3  px-5">
-              <Checkbox />{" "}
+              <Checkbox
+                onCheckedChange={(e) => {
+                  setGuidesform((prevState) => {
+                    return { ...prevState, termsAndConditions: e as boolean };
+                  });
+                }}
+              />{" "}
               <p className="text-neutral-700 text-sm">
                 I certify that i am atleast 18 years old and i agree to the{" "}
                 <Link
@@ -320,7 +393,12 @@ const Guides = () => {
           <section className="mt-10  flex  ">
             <Button
               variant="default"
-              className="bg-neutral-700 ml-5 w-[25%] px-5"
+              className={clsx(
+                "bg-neutral-700 ml-5 w-[25%] px-5",
+                !Guidesform.termsAndConditions
+                  ? "pointer-events-auto opacity-50"
+                  : "pointer-events-auto opacity-100"
+              )}
             >
               submit
             </Button>

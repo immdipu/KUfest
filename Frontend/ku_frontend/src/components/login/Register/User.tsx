@@ -284,7 +284,7 @@ const User = () => {
           <br />
           <section className="flex mt-2 space-x-12">
             <div className="flex flex-col w-full ">
-              <label htmlFor="gender" className="px-1">
+              <label htmlFor="gender" className="px-1 ">
                 Choose your Gender :
               </label>
               <div className="mt-2 w-full ">
@@ -510,9 +510,9 @@ const User = () => {
               </div>
             )}
           </section>
-          <br/>
-          <Separator/>
-          <br/>
+          <br />
+          <Separator />
+          <br />
           <section>
             <label htmlFor="about">Write your preferences</label>
             <textarea
