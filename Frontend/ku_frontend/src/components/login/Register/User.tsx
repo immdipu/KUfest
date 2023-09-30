@@ -356,7 +356,7 @@ const User = () => {
             </div>
             <br />
             <div>
-              <label htmlFor="gender" className="px-1">
+              <label htmlFor="language" className="px-1">
                 Add languages you can speak :
               </label>
               <div className="mt-2">
@@ -444,7 +444,75 @@ const User = () => {
 
           <Separator />
           <br />
+          <section>
+            <div className="w-full mt-2">
+              <label htmlFor="address" className="px-1">
+                Need a helper?
+              </label>
+              <div className="mt-5 pl-1">
+                <RadioGroup
+                  defaultValue="no"
+                  className="flex flex-col gap-4"
+                  onValueChange={(e) => {
+                    setUsersform((prevState) => {
+                      return { ...prevState, tourType: e };
+                    });
+                  }}
+                >
+                  <div className="flex flex-col  space-x-2">
+                    <div className=" space-x-3 flex items-center">
+                      <RadioGroupItem
+                        value="yes"
+                        id="option-one"
+                        className="text-green-500 border-green-500"
+                      />
+                      <Label htmlFor="option-one" className="text-neutral-800">
+                        Yes
+                      </Label>
+                    </div>
+                  </div>
+                  <div className="flex flex-col  space-x-2">
+                    <div className=" space-x-3 flex items-center">
+                      <RadioGroupItem
+                        className="text-green-500 border-green-500"
+                        value="no"
+                        id="option-one"
+                      />
+                      <Label htmlFor="option-one" className="text-neutral-800">
+                        No
+                      </Label>
+                    </div>
+                  </div>
+                </RadioGroup>
+              </div>
+            </div>
 
+            {usersform?.tourType === "group" && (
+              <div className="mt-10">
+                <div>
+                  <div className="flex  mt-3">
+                    <div className="w-full">
+                      <label htmlFor="address" className="px-1">
+                        Total no of visitor
+                      </label>
+                      <Input
+                        id="member"
+                        type="number"
+                        name="numberOfvisitors"
+                        className=" my-2 w-1/2"
+                        placeholder="0"
+                        onChange={formHandler}
+                        min={2}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </section>
+          <br/>
+          <Separator/>
+          <br/>
           <section>
             <label htmlFor="about">Write your preferences</label>
             <textarea
