@@ -34,7 +34,7 @@ const signupGuide = async (req, res, next) => {
     }
 };
 
-const login = async (req, res) => {
+const login = async (req, res,next) => {
     const { email, password } = req.body;
 
     try {
@@ -51,7 +51,7 @@ const login = async (req, res) => {
                 const token = jwt.sign(obj, 'fallback_secret_key')
                 delete obj.password;
 
-                return res.send({ data: obj, token });
+                res.send({...obj, token});
             }
         }
 
