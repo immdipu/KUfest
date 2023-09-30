@@ -10,17 +10,16 @@ import Link from "../../../node_modules/next/link";
 
 const Home = () => {
   const [show, setShow] = useState("first");
+  const [secondShow, setsecondShow] = useState("first");
 
   return (
     <div>
       <section className="flex">
-        <section className="w-1/2 h-96  relative">
-          <iframe
-            src="https://streamable.com/e/xx64ln?autoplay=1&nocontrols=1&mute=1"
-            width="100%"
-            height="100%"
-            className="w-full"
-          ></iframe>
+        <section className="w-1/2 h-96 overflow-hidden  relative">
+          <img
+            src="https://www.sportsnepaltour.com/img/package/1805877046_1410766328kathmandu-pokhara-tour-001.gif"
+            alt=""
+          />
           <div className=" bg-transparent flex flex-col absolute inset-0">
             <section className="flex-1   border-red-600  flex flex-col justify-center  pl-10 bg-neutral-800 bg-opacity-60  ">
               <div className="w-3/5 ">
@@ -102,31 +101,31 @@ const Home = () => {
           </div>
           <section className="border-t border-neutral-100 border-opacity-70 h-20 bg-neutral-800 bg-opacity-30 flex">
             <button
-              onClick={() => setShow("first")}
+              onClick={() => setsecondShow("first")}
               className={clsx(
                 "text-sm text-white  border-r border-neutral-100 border-opacity-70 w-full",
-                show === "first" && "bg-neutral-800 bg-opacity-70"
+                secondShow === "first" && "bg-neutral-800 bg-opacity-70"
               )}
             >
-              Nepal, Where Ordinary <br /> Becomes Extraordinary
+              Inclusion makes every journey more enriching
             </button>
             <button
-              onClick={() => setShow("second")}
+              onClick={() => setsecondShow("second")}
               className={clsx(
                 "text-sm text-white w-full border-r border-neutral-100 border-opacity-70 px-4",
-                show === "second" && "bg-neutral-800 bg-opacity-70"
+                secondShow === "second" && "bg-neutral-800 bg-opacity-70"
               )}
             >
-              Uncover Hidden Gems in Nepal
+              Unlock endless travel possibilities
             </button>
             <button
-              onClick={() => setShow("third")}
+              onClick={() => setsecondShow("third")}
               className={clsx(
                 "text-sm text-white w-full px-4 ",
-                show === "third" && "bg-neutral-800 bg-opacity-70"
+                secondShow === "third" && "bg-neutral-800 bg-opacity-70"
               )}
             >
-              Explore 360&rsquo; Views of Nepal&rsquo;s Scenery
+              Embrace the world's beauty through accesible exploration
             </button>
           </section>
         </section>
@@ -134,7 +133,7 @@ const Home = () => {
       <section>
         <AccessibleTourism />
       </section>
-      <section>
+      <section id="places" className="scroll-smooth">
         <ExplorePlaces />
       </section>
       <section>

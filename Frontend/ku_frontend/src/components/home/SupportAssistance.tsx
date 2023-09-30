@@ -14,7 +14,7 @@ const SupportAssistance = () => {
         <section className="flex   mt-20 ">
           <div className="w-1/2 ml-32 px-6 mt-10 border-red-500 flex flex-col ">
             <h2 className="font-semibold text-2xl text-neutral-700 ">
-              Professional Caregivers
+              Professional Assistance
             </h2>
             <p className="mt-5 text-neutral-800 w-3/4 leading-7">
               Our platform connects you with dedicated caregivers who specialize
@@ -25,9 +25,9 @@ const SupportAssistance = () => {
               professional care in the comfort of your home. Rest easy, knowing
               you are in capable hands.
             </p>
-            <Link href={"/caregiver"} className="mt-5">
+            <Link href={"/assistances"} className="mt-5">
               <button className="bg-green-500 text-white px-4 rounded-full py-2 mt-5">
-                Learn More
+                Hire Assistance
               </button>
             </Link>
           </div>
@@ -56,9 +56,9 @@ const SupportAssistance = () => {
               transportation service takes the hassle out of planning your
               journey. Enjoy the freedom to explore your city with ease.
             </p>
-            <Link href={"/caregiver"} className="mt-5">
+            <Link href={"/transportation"} className="mt-5">
               <button className="bg-green-500 text-white px-4 rounded-full py-2 mt-5">
-                Learn More
+                Checkout Acessible Transportation
               </button>
             </Link>
           </div>
@@ -87,7 +87,7 @@ const SupportAssistance = () => {
               that your travel experiences are enjoyable, stress-free, and
               memorable. Start your journey to inclusive travel today.
             </p>
-            <Link href={"/caregiver"} className="mt-5">
+            <Link href={"/tourism"} className="mt-5">
               <button className="bg-green-500 text-white px-4 rounded-full py-2 mt-5">
                 Learn More
               </button>

@@ -3,10 +3,19 @@
 @tailwind utilities;
 
 .nepal {
-    color: red;
+  color: red;
 }
 
 .ease {
-    color: blue;
-    ;
+  color: blue;
+  ;
+}
+
+
+.noscroll {
+  overflow: hidden;
+}
+
+.popularCities::-webkit-scrollbar {
+  display: none;
 }

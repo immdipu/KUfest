@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,23 +14,21 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import UserAvatar from "./Avatar/UserAvatar";
+import { useAppSelector } from "@/redux/hooks";
+import { AutoLogin, LoggedIn } from "@/redux/slice/authSlice";
+import { useAppDispatch } from "@/redux/hooks";
 
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Explore Places",
-    href: "#places",
+    href: "/#places",
     description:
       "Explore places in Nepal. Find the best places to visit in Nepal. Discover the best of Nepal.",
   },
   {
-    title: "Caregiver Services",
-    href: "#caregiver",
-    description:
-      "Compassionate Care at Your Fingertips - Connect with experienced caregivers to support you or your loved ones.",
-  },
-  {
     title: "Assistance on Demand",
-    href: "#assistance",
+    href: "/assistances",
     description:
       "On-Demand Help and Support - Instantly connect with professionals for daily tasks and emergencies.",
   },
@@ -41,28 +40,43 @@ const components: { title: string; href: string; description: string }[] = [
   },
   {
     title: "Professional Guides",
-    href: "#guides",
+    href: "/assistances",
     description:
       "Connecting You to Experts - Easily connect with professionals for essential services and tourist guides.",
-  },
-  {
-    title: "Rating System",
-    href: "3rating-system",
-    description:
-      "Community-Powered Reviews - Share and access insights on accessibility and services for the disabled community.",
   },
 ];
 
 const TopNav = () => {
+  const user = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch(AutoLogin());
+      const data = localStorage.getItem("data")
+        ? JSON.parse(localStorage.getItem("data")!)
+        : null;
+      if (data) {
+        dispatch(LoggedIn(data));
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <nav className="bg-neutral-200 h-16">
+    <nav className="z-50 h-16 sticky top-0 bg-neutral-200">
       <div className="h-full flex w-full items-center bg-neutral-200 px-7">
         <div className="">
           <Link
             href={"/"}
             className="   text-neutral-900 font-bold text-xl px-5  py-2 rounded-full "
           >
-            Visit Nepal
+            <img
+              src="/assests/logo.jpg"
+              alt="img"
+              className=" img-blend w-30 h-10"
+            />
           </Link>
         </div>
         <div className="flex border-2  flex-1 justify-center">
@@ -92,7 +106,7 @@ const TopNav = () => {
           </div>
           <div className="p-2">
             <Link
-              href="#places"
+              href={"//#places"}
               className="text-base hover:bg-slate-100 transition-colors duration-150 ease-linear py-2 px-3 rounded-md font-medium"
             >
               Explore Places
@@ -106,17 +120,18 @@ const TopNav = () => {
               About us
             </Link>
           </div>
-          <div className="p-2">
-            <Link href={"/places"} className="text-sm font-medium"></Link>
-          </div>
         </div>
         <div className="mr-9">
-          <Link
-            href={"/login"}
-            className="bg-neutral-700 hover:bg-neutral-900  text-neutral-100 px-5  py-2 rounded-full "
-          >
-            Login
-          </Link>
+          {user.isUserAuthenticated ? (
+            <UserAvatar />
+          ) : (
+            <Link
+              href={"/login"}
+              className="bg-neutral-700 hover:bg-neutral-900  text-neutral-100 px-5  py-2 rounded-full "
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </nav>

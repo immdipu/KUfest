@@ -1,5 +1,5 @@
 const express = require("express");
-// const cors = require('cors');
+const cors = require('cors');
 // require('dotenv').config();
 const fileUpload = require("express-fileupload");
 require("./config/database");
@@ -7,7 +7,7 @@ const tourist_route = require("./route/tourist");
 const guide_route = require("./route/guide");
 const city_route = require("./route/city");
 const places_route = require("./route/places");
-const hire_route = require("./route/hire");
+// const hire_route = require("./route/hire");
 
 
 
@@ -25,10 +25,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(fileUpload());
 
-// app.use(cors({
-//     origin: "http://localhost:3000",
-//     optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
-//   })); 
+app.use(cors({
+    origin: "*",
+    optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+  })); 
   
 
 app.use("/api",tourist_route);
@@ -36,7 +36,7 @@ app.use("/api",tourist_route);
 app.use("/api",guide_route);
 app.use("/api", city_route);
 app.use("/api", places_route)
-app.use("/api", hire_route)
+// app.use("/api", hire_route)
 
 
 

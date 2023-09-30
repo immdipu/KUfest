@@ -3,15 +3,8 @@ import React from "react";
 const Page = () => {
   return (
     <div className="bg-gray-100">
-      {/* Navbar */}
-      {/* Add your navbar component here */}
-
       <div className="max-w-3xl p-8 bg-white rounded-lg shadow-lg mx-auto mt-4">
-        {" "}
-        {/* Container div */}
         <div className="border-b border-neutral-200 pb-6 mb-6 mt-4">
-          {" "}
-          {/* Add mt-4 here */}
           <h1 className="text-4xl font-bold mb-4 text-center">
             <span className="nepal">Nepal</span>
             <span className="ease">EASE</span>

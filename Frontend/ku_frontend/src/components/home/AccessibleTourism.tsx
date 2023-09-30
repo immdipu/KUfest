@@ -13,7 +13,8 @@ const AccessibleTourism = () => {
       <div className=" bg-neutral-200 py-7 pt-32 ">
         <div>
           <h3 className="px-6 font-bold text-4xl text-green-500 text-center  ">
-            NepalEASE
+          <span className="nepal">Nepal</span>
+            <span className="ease">EASE</span>
           </h3>
           <p className="text-center mt-2 font-medium text-xl">
             Experience the best of the Nepal
@@ -32,27 +33,27 @@ const AccessibleTourism = () => {
           <section className="w-1/2 py-3 items-center grid  grid-cols-2 gap-5">
             <div className="flex gap-3">
               <BsShieldFillCheck className="text-green-600 text-3xl" />{" "}
-              <span className="text-xl font-medium">Professional Guides</span>
+              <span className="text-xl font-medium">Explore Places</span>
             </div>
             <div className="flex gap-3">
               <BsShieldFillCheck className="text-green-600 text-3xl" />{" "}
-              <span className="text-xl font-medium">Professional Guides</span>
+              <span className="text-xl font-medium">Indulge in Local Flavors</span>
             </div>
             <div className="flex gap-3">
               <BsShieldFillCheck className="text-green-600 text-3xl" />{" "}
-              <span className="text-xl font-medium">Professional Guides</span>
+              <span className="text-xl font-medium">Experience Thrilling Activities</span>
             </div>
             <div className="flex gap-3">
               <BsShieldFillCheck className="text-green-600 text-3xl" />{" "}
-              <span className="text-xl font-medium">Professional Guides</span>
+              <span className="text-xl font-medium">Celebrate Cultural Fusion</span>
             </div>
             <div className="flex gap-3">
               <BsShieldFillCheck className="text-green-600 text-3xl" />{" "}
-              <span className="text-xl font-medium">Professional Guides</span>
+              <span className="text-xl font-medium">Encounter Wildlife Wonders</span>
             </div>
             <div className="flex gap-3">
               <BsShieldFillCheck className="text-green-600 text-3xl" />{" "}
-              <span className="text-xl font-medium">Professional Guides</span>
+              <span className="text-xl font-medium">Create Unforgettable Memories</span>
             </div>
           </section>
         </section>

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const GuideSignupSchema = new Schema({
-    full_name: {
+    fullName: {
         type: String,
         maxlength: 300,
         required: true
@@ -25,34 +25,57 @@ const GuideSignupSchema = new Schema({
         type: String,
         required: true,
     },
-    contact:{
+    contactNumber:{
         type: Number,
         required: true,
-    },
-    Gender: {
-        type: String,
-    },
-    date_Of_Birth:{
-        type: Date
-
-    },
-    payment:{
-        type: String
-    },
-    rate: {
-        type: Number
-    },
-    language:{
-        type: [String]
     },
     address: {
         type: String,
         required: true
     },
-    Experience: {
+    dateOfBirth:{
+        type: Date
+    },
+    language:{
+        type: [String]
+    },
+    gender: {
+        type: String,
+    },
+    tourType : {
+        type: String,
+    },
+    termsAndConditions: {
+        type: Boolean,
+
+    },
+    profilePic:{
+        type: String,
+        default: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png"
+    },
+    about:{
+        type: String,
+    },
+    paymentType:{
+        type: String
+    },
+    rate: {
+        type: Number
+    },
+    
+    
+    experience: {
         type: String,
 
-    }
+    },
+    // reviews: [{
+    //     user: {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'User'
+    //     },
+    //     comment: String,
+    //     rating: Number
+    // }],
 })
 
 module.exports = mongoose.model("Guide", GuideSignupSchema) 
