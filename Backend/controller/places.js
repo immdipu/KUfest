@@ -1,20 +1,46 @@
 const Place = require("../model/Places");
+const path = require("path");
 const createPlace = async (req, res, next) => {
     try {
-        const { name, city, description, images, ratings, reviews, posts, articles } = req.body;
+        let imageFiles = req.files ? req.files.images || [] : [];
+        if (!Array.isArray(imageFiles)) {
+            imageFiles = [imageFiles];
+        }
 
-        const place = await Place.create({ 
-            name,
-            city,
-            description,
-            images,
-            ratings,
-            reviews,
-            posts,
-            articles
-        });
+        const uploadedImagePaths = [];
 
-        res.status(201).json({ success: true, data: place });
+        if (imageFiles.length > 0) {
+            // Upload images and populate uploadedImagePaths array
+            for (const imageFile of imageFiles) {
+                const file_name =
+                    Date.now() + "-" + Math.round(Math.random() * 1E9) + path.extname(imageFile.name);
+
+                await new Promise((resolve, reject) => {
+                    imageFile.mv(
+                        path.join(__dirname, "../", "uploads/", file_name),
+                        (err) => {
+                            if (err) {
+                                console.error(err);
+                                reject(err);
+                            } else {
+                                uploadedImagePaths.push(file_name);
+                                resolve();
+                            }
+                        }
+                    );
+                });
+            }
+        }
+
+        const placeData = {
+            ...req.body,
+            images: uploadedImagePaths,
+            // created_by: req.user._id,
+        };
+
+        const city = await Place.create(placeData);
+
+        res.status(201).json({ success: true, data: city });
     } catch (error) {
         next(error);
     }

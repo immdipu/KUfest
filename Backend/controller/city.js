@@ -76,6 +76,8 @@ const createPlaceInCity = async (req, res, next) => {
         next(error);
     }
 };
+
+
 const getCities = async (req, res, next) => {
     try {
         const places = await City.find();
