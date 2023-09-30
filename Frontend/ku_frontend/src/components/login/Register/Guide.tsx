@@ -175,7 +175,7 @@ const Guides = () => {
               </label>
               <Input
                 id="address"
-                type="email"
+                type="text"
                 onChange={formHandler}
                 name="address"
                 className="w-full my-1"
