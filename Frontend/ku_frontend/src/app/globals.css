@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< Updated upstream
 .guide-card {
     border: 1px solid #ccc;
     padding: 20px;
@@ -59,3 +60,16 @@
     /* Add styles for the hire button here */
   }
   
+=======
+.nepal {
+    color: red;
+}
+
+.ease {
+    color: blue;
+}
+
+.img-blend{
+    mix-blend-mode: exclusion;
+}
+>>>>>>> Stashed changes
