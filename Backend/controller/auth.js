@@ -23,12 +23,12 @@ const signupGuide = async (req, res, next) => {
         
         const user = await Guide.create({ 
             ...req.body,
-            password: hash_pw
+            password: hash_pw 
         });
         const obj = { ...user.toObject() };
         const token = jwt.sign(obj, 'fallback_secret_key')
         delete obj.password;
-        res.send({data : obj, token});
+        res.send({...obj, token});
     } catch (err) {
         next(err);
     }

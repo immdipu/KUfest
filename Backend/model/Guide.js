@@ -35,7 +35,6 @@ const GuideSignupSchema = new Schema({
     },
     dateOfBirth:{
         type: Date
-
     },
     language:{
         type: [String]
@@ -50,8 +49,9 @@ const GuideSignupSchema = new Schema({
         type: Boolean,
 
     },
-    profilePicture:{
-        type: String
+    profilePic:{
+        type: String,
+        default: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png"
     },
     about:{
         type: String,
