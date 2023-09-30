@@ -1,5 +1,5 @@
 // pages/api/hire.js
-import Hire from '../../model/Hire';
+import Hire from '../model/HIre';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {

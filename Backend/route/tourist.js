@@ -1,6 +1,6 @@
 const Joi = require('joi');
 const express = require("express");
-const {  getAllTourist,  signupTourist,loginTourist} = require("../controller/auth")
+const {  getAllTourist,  signupTourist,login} = require("../controller/auth")
 // const validateSchema = require("../middleware/validateSchema")
 
 const router = express.Router()
@@ -16,7 +16,7 @@ const loginSchema = Joi.object({
 
 });
 router.post("/signuptourist",signupTourist);
-router.post("/logintourist",loginTourist);
+router.post("/login",login);
 router.get("/tourist",getAllTourist);
 
 

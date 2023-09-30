@@ -30,61 +30,32 @@ const signupGuide = async (req, res, next) => {
     }
 };
 
-const loginTourist = (async(req, res) => {
-    
-    let user = await Tourist.findOne({email:req.body.email})
-    console.log(user);
-    
-    if(user){
- 
-     
- 
-     let status = await bcrypt.compare(req.body.password,user.password );
-     if(status){
-         
-         //hiding password:
-         let obj = {...user.toObject()}
-         var token = jwt.sign(obj, 'fallback_secret_key');
-         delete obj.password
- 
- 
-         return res.send({data:obj, token})
-     }
- }
- return res.status(401).send({msg:"unauthenticated"})
-   
-   
-  
-})
- 
-const loginGuide = (async(req, res) => {
-    
-   let user = await Guide.findOne({email:req.body.email})
-   console.log(user);
-   
-   if(user){
+const login = async (req, res) => {
+    const { email, password } = req.body;
 
-    
+    try {
+        let user = await Tourist.findOne({ email });
 
-    let status = await bcrypt.compare(req.body.password,user.password );
-    if(status){
-        
-        //hiding password:
-        let obj = {...user.toObject()}
-        var token = jwt.sign(obj, 'fallback_secret_key');
-        delete obj.password
+        if (!user) {
+            user = await Guide.findOne({ email });
+        }
 
+        if (user) {
+            const status = await bcrypt.compare(password, user.password);
+            if (status) {
+                const obj = { ...user.toObject() };
+                const token = jwt.sign(obj, 'fallback_secret_key');
+                delete obj.password;
 
-        return res.send({data:obj, token})
+                return res.send({ data: obj, token });
+            }
+        }
+
+        return res.status(401).send({ msg: "unauthenticated" });
+    } catch (err) {
+        next(err);
     }
-}
-   
-  
-   return res.status(401).send({msg:"unauthenticated"})
-   
-   
-  
-})
+};
 const getAllGuide = (async(req, res, next) => {
     
     try {
@@ -110,8 +81,7 @@ const getAllGuide = (async(req, res, next) => {
 module.exports = {
     signupTourist,
     signupGuide,
-    loginTourist,
-    loginGuide,
+    login,
     getAllGuide,
     getAllTourist,
 };
