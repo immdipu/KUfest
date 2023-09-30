@@ -1,5 +1,5 @@
 const express = require("express");
-// const cors = require('cors');
+const cors = require('cors');
 // require('dotenv').config();
 const fileUpload = require("express-fileupload");
 require("./config/database");
@@ -25,10 +25,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(fileUpload());
 
-// app.use(cors({
-//     origin: "http://localhost:3000",
-//     optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
-//   })); 
+app.use(cors({
+    origin: "*",
+    optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+  })); 
   
 
 app.use("/api",tourist_route);
