@@ -3,6 +3,7 @@ import React, { useState, FormEvent } from "react";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useMutation } from "@tanstack/react-query";
+import SmallLoader from "@/components/loader/SmallLoader";
 import {
   Select,
   SelectContent,
@@ -17,6 +18,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LanguageList } from "@/lib/utils";
 import clsx from "clsx";
+import toast from "react-hot-toast";
+import userApis from "@/Apis";
 import {
   Popover,
   PopoverContent,
@@ -62,6 +65,20 @@ const Guides = () => {
     setLanguages(e);
   };
 
+  const Signup = useMutation((data: any) => userApis.signUp(data), {
+    onSuccess: (data) => {
+      console.log(data);
+      toast.success("Account created successfully");
+    },
+    onError: (data: any) => {
+      if (data.response.data) {
+        toast.error(data.response.data);
+      } else {
+        toast.error("Sign up failed ");
+      }
+    },
+  });
+
   const handleGenderChange = (e: string) => {
     setGuidesform((prevState) => {
       return { ...prevState, gender: e };
@@ -88,7 +105,7 @@ const Guides = () => {
       if (!date) return { ...prevState };
       return { ...prevState, dateOfBirth: date.toString() };
     });
-    console.log();
+    Signup.mutate(Guidesform);
   };
 
   return (
@@ -400,7 +417,11 @@ const Guides = () => {
                   : "pointer-events-auto opacity-100"
               )}
             >
-              submit
+              {Signup.isLoading ? (
+                <SmallLoader size={20} />
+              ) : (
+                <span>Sign Up</span>
+              )}
             </Button>
           </section>
         </form>

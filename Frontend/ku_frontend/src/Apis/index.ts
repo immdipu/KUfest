@@ -24,3 +24,5 @@ const userApis = {
     return res.data;
   },
 };
+
+export default userApis;
