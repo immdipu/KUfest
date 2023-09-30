@@ -1,4 +1,4 @@
-import { axiosInstance } from "@/lib/utils";
+// import { axiosInstance } from "@/lib/utils";
 import axios from "axios";
 
 const userApis = {
@@ -24,3 +24,5 @@ const userApis = {
     return res.data;
   },
 };
+
+export default userApis;
