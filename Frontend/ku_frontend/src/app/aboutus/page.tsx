@@ -39,10 +39,10 @@ const Page = () => {
                     <svg
                       fill="none"
                       height="24"
-                      shape-rendering="geometricPrecision"
+                      shapeRendering="geometricPrecision"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       stroke-width="1.5"
                       viewBox="0 0 24 24"
                       width="24"
@@ -69,10 +69,10 @@ const Page = () => {
                     <svg
                       fill="none"
                       height="24"
-                      shape-rendering="geometricPrecision"
+                      shapeRendering="geometricPrecision"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       stroke-width="1.5"
                       viewBox="0 0 24 24"
                       width="24"
@@ -97,10 +97,10 @@ const Page = () => {
                     <svg
                       fill="none"
                       height="24"
-                      shape-rendering="geometricPrecision"
+                      shapeRendering="geometricPrecision"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       stroke-width="1.5"
                       viewBox="0 0 24 24"
                       width="24"
@@ -118,9 +118,6 @@ const Page = () => {
               </details>
             </div>
 
-
-
-
             <div className="py-5">
               <details className="group">
                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
@@ -129,11 +126,11 @@ const Page = () => {
                     <svg
                       fill="none"
                       height="24"
-                      shape-rendering="geometricPrecision"
+                      shapeRendering="geometricPrecision"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       viewBox="0 0 24 24"
                       width="24"
                     >
@@ -142,7 +139,10 @@ const Page = () => {
                   </span>
                 </summary>
                 <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
-                  Yes, NepalEASE is suitable for solo travelers. Our services are designed to accommodate both solo travelers and groups. We can provide you with the assistance and guidance you need to have a memorable solo adventure in Nepal.
+                  Yes, NepalEASE is suitable for solo travelers. Our services
+                  are designed to accommodate both solo travelers and groups. We
+                  can provide you with the assistance and guidance you need to
+                  have a memorable solo adventure in Nepal.
                 </p>
               </details>
             </div>
@@ -154,11 +154,11 @@ const Page = () => {
                     <svg
                       fill="none"
                       height="24"
-                      shape-rendering="geometricPrecision"
+                      shapeRendering="geometricPrecision"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       viewBox="0 0 24 24"
                       width="24"
                     >
@@ -167,24 +167,14 @@ const Page = () => {
                   </span>
                 </summary>
                 <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
-                  The best times to visit Nepal are during the spring (March to May) and autumn (September to November) seasons. These months offer pleasant weather and are ideal for trekking and exploring Nepal&apos;s natural beauty.
+                  The best times to visit Nepal are during the spring (March to
+                  May) and autumn (September to November) seasons. These months
+                  offer pleasant weather and are ideal for trekking and
+                  exploring Nepal&apos;s natural beauty.
                 </p>
               </details>
             </div>
             {/* Add more FAQ items following the same structure */}
-
-
-
-
-
-
-
-
-
-
-
-
-
           </div>
         </div>
       </div>

@@ -20,6 +20,7 @@ import Map from "./Map";
 import toast from "react-hot-toast";
 import clsx from "clsx";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useRouter } from "next/navigation";
 
 interface modalProps {
   rate: number;
@@ -38,6 +39,7 @@ const disabilities = [
 ];
 
 const Modal: React.FC<modalProps> = ({ rate, setShowModal }) => {
+  const router = useRouter();
   const [Details, setDettails] = useState<DisableAisstanceHireProps>({
     hireRate: undefined,
     DisablePersonAbout: undefined,
@@ -87,8 +89,9 @@ const Modal: React.FC<modalProps> = ({ rate, setShowModal }) => {
       toast.error("Please enter a valid amount");
       return;
     }
-    console.log(Details);
+
     toast.success("succesfully submitted");
+    router.push("/chat");
   };
 
   return (

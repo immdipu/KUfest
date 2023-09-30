@@ -22,7 +22,7 @@ import { useAppDispatch } from "@/redux/hooks";
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Explore Places",
-    href: "/#places",
+    href: "#places",
     description:
       "Explore places in Nepal. Find the best places to visit in Nepal. Discover the best of Nepal.",
   },
