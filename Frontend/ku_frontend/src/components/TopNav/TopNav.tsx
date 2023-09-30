@@ -22,19 +22,13 @@ import { useAppDispatch } from "@/redux/hooks";
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Explore Places",
-    href: "/places",
+    href: "/#places",
     description:
       "Explore places in Nepal. Find the best places to visit in Nepal. Discover the best of Nepal.",
   },
   {
-    title: "Caregiver Services",
-    href: "/caregiver",
-    description:
-      "Compassionate Care at Your Fingertips - Connect with experienced caregivers to support you or your loved ones.",
-  },
-  {
     title: "Assistance on Demand",
-    href: "/assistance",
+    href: "/assistances",
     description:
       "On-Demand Help and Support - Instantly connect with professionals for daily tasks and emergencies.",
   },
@@ -46,15 +40,9 @@ const components: { title: string; href: string; description: string }[] = [
   },
   {
     title: "Professional Guides",
-    href: "/guides",
+    href: "/assistances",
     description:
       "Connecting You to Experts - Easily connect with professionals for essential services and tourist guides.",
-  },
-  {
-    title: "Rating System",
-    href: "/rating-system",
-    description:
-      "Community-Powered Reviews - Share and access insights on accessibility and services for the disabled community.",
   },
 ];
 
@@ -77,7 +65,7 @@ const TopNav = () => {
   }, []);
 
   return (
-    <nav className="bg-neutral-200 h-16">
+    <nav className="z-50 h-16 sticky top-0 bg-neutral-200">
       <div className="h-full flex w-full items-center bg-neutral-200 px-7">
         <div className="">
           <Link
@@ -118,7 +106,7 @@ const TopNav = () => {
           </div>
           <div className="p-2">
             <Link
-              href={"/places"}
+              href={"//#places"}
               className="text-base hover:bg-slate-100 transition-colors duration-150 ease-linear py-2 px-3 rounded-md font-medium"
             >
               Explore Places
@@ -126,14 +114,11 @@ const TopNav = () => {
           </div>
           <div className="p-2">
             <Link
-              href={"/places"}
+              href={"/aboutus"}
               className="text-base font-medium hover:bg-slate-100 transition-colors duration-150 ease-linear py-2 px-3 rounded-md"
             >
               About us
             </Link>
-          </div>
-          <div className="p-2">
-            <Link href={"/places"} className="text-sm font-medium"></Link>
           </div>
         </div>
         <div className="mr-9">

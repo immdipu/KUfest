@@ -189,7 +189,7 @@ const Modal: React.FC<modalProps> = ({ rate, setShowModal }) => {
               </Button>
               <Button
                 variant="default"
-                className={clsx("bg-neutral-700 ml-5 w-[25%] px-5")}
+                className={clsx("bg-green-500 ml-5 w-[25%] px-5")}
               >
                 Apply Now
               </Button>

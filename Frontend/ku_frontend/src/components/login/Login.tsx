@@ -26,6 +26,7 @@ const Login = () => {
     onSuccess: (data) => {
       console.log(data);
       dispatch(LoggedIn(data));
+      localStorage.setItem("data", JSON.stringify(data));
       toast.success(" Logged in successfully");
       router.push("/");
     },
