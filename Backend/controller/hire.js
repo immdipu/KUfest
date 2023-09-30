@@ -1,7 +1,7 @@
 // pages/api/hire.js
-import Hire from '../model/HIre';
+const Hire = require('../model/HIre');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method === 'POST') {
     try {
       const { touristId, guideId, additionalInfo } = req.body;
