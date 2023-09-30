@@ -6,6 +6,7 @@ import clsx from "clsx";
 import ExplorePlaces from "./ExplorePlaces";
 import AccessibleTourism from "./AccessibleTourism";
 import SupportAssistance from "./SupportAssistance";
+import Link from "../../../node_modules/next/link";
 
 const Home = () => {
   const [show, setShow] = useState("first");
@@ -46,9 +47,9 @@ const Home = () => {
                   </p>
                 )}
                 <div className=" w-full mt-5">
-                  <button className="bg-blue-500 text-white px-4 rounded-full py-2">
+                  <Link href={"/view"} className="bg-blue-500 text-white px-4 rounded-full py-2">
                     Explore Here
-                  </button>
+                  </Link>
                 </div>
               </div>
             </section>
