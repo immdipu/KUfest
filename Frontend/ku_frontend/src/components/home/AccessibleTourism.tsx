@@ -13,7 +13,8 @@ const AccessibleTourism = () => {
       <div className=" bg-neutral-200 py-7 pt-32 ">
         <div>
           <h3 className="px-6 font-bold text-4xl text-green-500 text-center  ">
-            NepalEASE
+          <span className="nepal">Nepal</span>
+            <span className="ease">EASE</span>
           </h3>
           <p className="text-center mt-2 font-medium text-xl">
             Experience the best of the Nepal

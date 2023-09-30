@@ -378,3 +378,115 @@ const User = () => {
 };
 
 export default User;
+// pages/tourist/signup.js
+
+// /* use client */
+// import React, { FormEvent, useState } from "react";
+// // ...
+
+
+// import React, { FormEvent, useState } from "react";
+// import { Input } from "@/components/ui/input";
+// import { Separator } from "@/components/ui/separator";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "@/components/ui/select";
+// import { Calendar } from "@/components/ui/calendar";
+// import { format } from "date-fns";
+// import { Calendar as CalendarIcon } from "lucide-react";
+// import { Button } from "@/components/ui/button";
+// import SelectInput from "react-select";
+// import { Label } from "@/components/ui/label";
+// import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+// import { Checkbox } from "@/components/ui/checkbox";
+// import Link from "next/link";
+// import clsx from "clsx";
+
+// const initialUserForm = {
+//   fullName: undefined,
+//   email: undefined,
+//   password: undefined,
+//   contactNumber: undefined,
+//   address: undefined,
+//   dateOfBirth: undefined,
+//   gender: undefined,
+//   language: undefined,
+//   country: undefined,
+//   numberOfvisitors: undefined,
+//   termsAndConditions: undefined,
+//   profilePicture: undefined,
+//   about: undefined,
+// };
+
+// const Signup = () => {
+//   const [date, setDate] = React.useState<Date | undefined>();
+//   const [usersform, setUsersform] = useState(initialUserForm);
+
+//   const handleSelectChange = (e) => {
+//     setUsersform((prevState) => {
+//       return { ...prevState, language: e };
+//     });
+//   };
+
+//   const formHandler = (e) => {
+//     let name = e.target.name;
+//     let value = e.target.value.toString();
+//     setUsersform((prevState) => {
+//       return { ...prevState, [name]: value };
+//     });
+//   };
+
+//   const handleOnsubmit = async (e) => {
+//     e.preventDefault();
+//     setUsersform((prevState) => {
+//       if (!date) return { ...prevState };
+//       return { ...prevState, dateOfBirth: date.toString() };
+//     });
+
+//     try {
+//       const response = await fetch('/api/signuptourist', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(usersform),
+//       });
+//       const data = await response.json();
+//       console.log(data); // This will contain the response from your backend
+//     } catch (error) {
+//       console.error('Error:', error);
+//     }
+//   };
+
+//   const handleGenderChange = (e) => {
+//     setUsersform((prevState) => {
+//       return { ...prevState, gender: e };
+//     });
+//   };
+
+//   const handleTextareaChange = (e) => {
+//     setUsersform((prevState) => {
+//       return { ...prevState, about: e.target.value };
+//     });
+//   };
+
+//   return (
+//     <div>
+//       <h3 className="text-center mt-16 text-xl font-semibold text-green-600">
+//         Join Our Inclusive Tourism Community as a Tourist
+//       </h3>
+//       <section className="max-w-4xl mb-10 bg-neutral-100 w-full mx-auto px-10 py-16 rounded-3xl mt-8">
+//         <form onSubmit={handleOnsubmit}>
+//           {/* The rest of your form code remains the same */}
+//           {/* ... */}
+//         </form>
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default Signup;
