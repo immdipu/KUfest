@@ -1,21 +1,22 @@
-const Hire = require("../model/HIre");
+// pages/api/hire.js
+import Hire from '../model/HIre';
 
-const hireGuide = async (req, res, next) => {
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
     try {
-        const { touristId, guideId, additionalInfo } = req.body;
+      const { touristId, guideId, additionalInfo } = req.body;
 
-        const hire = await Hire.create({ 
-            tourist: touristId,
-            guide: guideId,
-            ...additionalInfo
-        });
+      const hire = await Hire.create({
+        tourist: touristId,
+        guide: guideId,
+        ...additionalInfo
+      });
 
-        res.status(201).json({ success: true, data: hire });
+      res.status(201).json({ success: true, data: hire });
     } catch (error) {
-        next(error);
+      res.status(500).json({ success: false, error: error.message });
     }
-};
-
-module.exports = {
-    hireGuide
-};
+  } else {
+    res.status(405).json({ success: false, message: 'Method not allowed' });
+  }
+}

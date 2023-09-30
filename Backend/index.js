@@ -7,7 +7,7 @@ const tourist_route = require("./route/tourist");
 const guide_route = require("./route/guide");
 const city_route = require("./route/city");
 const places_route = require("./route/places");
-const hire_route = require("./route/hire");
+// const hire_route = require("./route/hire");
 
 
 
@@ -36,7 +36,7 @@ app.use("/api",tourist_route);
 app.use("/api",guide_route);
 app.use("/api", city_route);
 app.use("/api", places_route)
-app.use("/api", hire_route)
+// app.use("/api", hire_route)
 
 
 
