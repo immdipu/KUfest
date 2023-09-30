@@ -98,9 +98,7 @@ const Modal: React.FC<modalProps> = ({ rate, setShowModal }) => {
           <h1 className="font-semibold text-neutral-800 py-2 px-8 mt-7 text-2xl">
             Submit Your Details
           </h1>
-          <div className="w-full mt-2  px-8 pt-8 h-full  ">
-            {typeof window !== undefined && <Map />}
-          </div>
+          <div className="w-full mt-2  px-8 pt-8 h-full  ">{/* <Map /> */}</div>
           <form onSubmit={submitHandler}>
             <section className="w-full px-12">
               <div className="mt-10">

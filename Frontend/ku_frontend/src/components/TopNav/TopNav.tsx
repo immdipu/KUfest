@@ -73,6 +73,7 @@ const TopNav = () => {
         dispatch(LoggedIn(data));
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
