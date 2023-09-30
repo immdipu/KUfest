@@ -16,21 +16,7 @@ const Pokhara = () => {
                         Visit to be captivated by the magic of this Himalayan gem. End your day by the lake, watching the sun dip behind the mountains, casting a warm, golden glow on Pokhara.
                     </p>
                 </div>
-                <div className='flex justify-center  opacity-75 '>
-                    <ol>
-                        <li className='list-disc'>Pokhara is a picturesque valley located in Nepal.</li>
-                        <li className='list-disc' >It is famous for Phewa Lake, where the Annapurna range is beautifully reflected.</li>
-                        <li className='list-disc'>Tourists can explore the World Peace Pagoda for breathtaking panoramic views.</li>
-                        <li className='list-disc'>Visit Bindabasini Temple to experience cultural heritage.</li>
-                        <li className='list-disc'>Adventure enthusiasts can enjoy paragliding, zip-lining, and white-water rafting.</li>
-                        <li className='list-disc'>Explore the mystical Gupteshwor Cave and the intriguing Bat Cave.</li>
-                        <li className='list-disc'>Learn about local culture at the Gurkha Memorial Museum and International Mountain Museum.</li>
-                        <li className='list-disc'>Relax in the charming cafes and restaurants in Lakeside.</li>
-                        <li className='list-disc'>Discover the tranquility of Begnas Lake and Rupa Lake nearby.</li>
-                        <li className='list-disc'>Visit Sarangkot for stunning sunrise and sunset views.</li>
-                        <li>Enjoy a boat ride on Phewa Lake and hire a paddleboat.</li>
-                    </ol>
-                </div>
+
 
             </div>
         </div>
