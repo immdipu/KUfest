@@ -35,4 +35,27 @@
   .guide-card button:hover {
     background-color: #0056b3;
   }
+  .name{
+    color: red;
+  }
+
+  .guideCard {
+    /* Add your base styles for the guide card here */
+  }
+  
+  .image {
+    /* Add styles for the image here */
+  }
+  
+  .name {
+    /* Add base styles for the name here */
+  }
+  
+  .red {
+    color: red; /* Make the name text color red */
+  }
+  
+  .hireButton {
+    /* Add styles for the hire button here */
+  }
   

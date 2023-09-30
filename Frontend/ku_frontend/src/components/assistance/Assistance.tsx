@@ -1,27 +1,52 @@
-"use client"
-import React from "react";
-import GuideCard from "./GuideCard"; // Adjust the import path as per your project structure
+import React, { useState } from 'react';
+import axios from 'axios';
+import 'react/jsx-runtime';
+// @ts-ignore
+import { CLIENT } from 'react/jsx-runtime';
+const Assistance: React.FC = () => {
+  const [selectedGuide, setSelectedGuide] = useState<string | null>(null);
 
-const Assistance = () => {
-  const handleHireClick = () => {
-    // Add logic to handle hiring the guide
-    console.log('Hiring guide...');
+  const handleHireClick = async () => {
+    try {
+      if (!selectedGuide) {
+        alert('Please select a guide first.');
+        return;
+      }
+
+      const response = await axios.post('/api/hire', {
+        touristId: 'tourist_id_here',
+        guideId: selectedGuide,
+        additionalInfo: {},
+      });
+
+      const { guide, tourist } = response.data;
+
+      if (guide && tourist) {
+        const guideName = (guide as { full_name: string }).full_name;
+        const touristName = (tourist as { full_name: string }).full_name;
+
+        alert(`Guide ${guideName} has been hired by ${touristName}`);
+      } else {
+        alert('Guide or Tourist not found');
+      }
+    } catch (error: any) {
+      console.error('Error hiring guide:', error.message);
+    }
+  };
+
+  const handleGuideSelect = (guideId: string) => {
+    setSelectedGuide(guideId);
   };
 
   return (
     <div>
-      <section className="max-w-5xl bg-neutral-200 mx-auto w-full">
-      <GuideCard
-        name="John Doe"
-        experience={5}
-        contact="john.doe@example.com"
-        onHireClick={handleHireClick}
-      />
-
-      </section>
-     
+      <ul>
+        <li onClick={() => handleGuideSelect('guide_id_1')}>Guide 1</li>
+        <li onClick={() => handleGuideSelect('guide_id_2')}>Guide 2</li>
+      </ul>
+      <button onClick={handleHireClick}>Hire Guide</button>
     </div>
-  );
+  ); 
 };
 
 export default Assistance;
