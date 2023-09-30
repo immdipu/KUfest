@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,7 +14,10 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-
+import UserAvatar from "./Avatar/UserAvatar";
+import { useAppSelector } from "@/redux/hooks";
+import { AutoLogin, LoggedIn } from "@/redux/slice/authSlice";
+import { useAppDispatch } from "@/redux/hooks";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -55,6 +59,21 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 const TopNav = () => {
+  const user = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch(AutoLogin());
+      const data = localStorage.getItem("data")
+        ? JSON.parse(localStorage.getItem("data")!)
+        : null;
+      if (data) {
+        dispatch(LoggedIn(data));
+      }
+    }
+  }, []);
 
   return (
     <nav className="bg-neutral-200 h-16">
@@ -64,7 +83,11 @@ const TopNav = () => {
             href={"/"}
             className="   text-neutral-900 font-bold text-xl px-5  py-2 rounded-full "
           >
-              <img src="/assests/logo.jpg" alt="img" className=" img-blend w-30 h-10"/>
+            <img
+              src="/assests/logo.jpg"
+              alt="img"
+              className=" img-blend w-30 h-10"
+            />
           </Link>
         </div>
         <div className="flex border-2  flex-1 justify-center">
@@ -113,12 +136,16 @@ const TopNav = () => {
           </div>
         </div>
         <div className="mr-9">
-          <Link
-            href={"/login"}
-            className="bg-neutral-700 hover:bg-neutral-900  text-neutral-100 px-5  py-2 rounded-full "
-          >
-            Login
-          </Link>
+          {user.isUserAuthenticated ? (
+            <UserAvatar />
+          ) : (
+            <Link
+              href={"/login"}
+              className="bg-neutral-700 hover:bg-neutral-900  text-neutral-100 px-5  py-2 rounded-full "
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </nav>

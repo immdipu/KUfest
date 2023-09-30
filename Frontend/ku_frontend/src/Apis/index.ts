@@ -4,7 +4,7 @@ import axios from "axios";
 const userApis = {
   signUp: async (data: any) => {
     const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_USER_URL}/user/signupguide`,
+      `${process.env.NEXT_PUBLIC_USER_URL}/api/signupguide`,
       data
     );
     return res.data;
@@ -18,7 +18,7 @@ const userApis = {
 
   Login: async (data: any) => {
     const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_USER_URL}/user/login`,
+      `${process.env.NEXT_PUBLIC_USER_URL}/api/login`,
       data
     );
     return res.data;

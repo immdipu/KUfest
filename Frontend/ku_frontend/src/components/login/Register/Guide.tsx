@@ -31,6 +31,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { GuideForm } from "@/types/UserForm";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
+import { useAppDispatch } from "@/redux/hooks";
+import { LoggedIn } from "@/redux/slice/authSlice";
 
 interface Props {
   value: string;
@@ -59,9 +61,9 @@ const Guides = () => {
   const [date, setDate] = React.useState<Date | undefined>();
   const [languages, setLanguages] = useState<Props[]>([]);
   const [Guidesform, setGuidesform] = useState<GuideForm>(initialUserForm);
+  const dispatch = useAppDispatch();
 
   const handleSelectChange = (e: any) => {
-    console.log(e);
     setLanguages(e);
   };
 
@@ -69,13 +71,11 @@ const Guides = () => {
     onSuccess: (data) => {
       console.log(data);
       toast.success("Account created successfully");
+      dispatch(LoggedIn(data));
+      localStorage.setItem("data", JSON.stringify(data));
     },
     onError: (data: any) => {
-      if (data.response.data) {
-        toast.error(data.response.data);
-      } else {
-        toast.error("Sign up failed ");
-      }
+      toast.error("Sign up failed ");
     },
   });
 
@@ -150,6 +150,7 @@ const Guides = () => {
               </label>
               <Input
                 id="email"
+                name="email"
                 type="email"
                 onChange={formHandler}
                 className="w-full my-1"

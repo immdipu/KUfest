@@ -1,10 +1,35 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Register from "@/components/login/Register/Register";
+import { useMutation } from "@tanstack/react-query";
+import userApis from "@/Apis";
+import { useAppDispatch } from "@/redux/hooks";
+import { LoggedIn } from "@/redux/slice/authSlice";
+import toast from "react-hot-toast";
+import SmallLoader from "../loader/SmallLoader";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const LogIn = useMutation((data: any) => userApis.Login(data), {
+    onSuccess: (data) => {
+      console.log(data);
+      dispatch(LoggedIn(data));
+      toast.success(" Logged in successfully");
+      router.push("/");
+    },
+    onError: (data: any) => {
+      if (data.response.data) {
+        toast.error(data.response.data);
+      } else {
+        toast.error("Login failed  Try Again!");
+      }
+    },
+  });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -12,8 +37,15 @@ const Login = () => {
       email: email,
       password: password,
     };
-    console.log(data);
+    LogIn.mutate(data);
   };
+
+  useEffect(() => {
+    return () => {
+      setEmail("");
+      setPassword("");
+    };
+  });
 
   return (
     <>
@@ -58,7 +90,7 @@ const Login = () => {
               className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
               type="submit"
             >
-              Login
+              {LogIn.isLoading ? <SmallLoader size={25} /> : "Login"}
             </button>
           </div>
           <Register />

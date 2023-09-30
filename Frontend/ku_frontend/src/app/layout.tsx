@@ -35,9 +35,11 @@ export default function RootLayout({
       </head>
 
       <body className={inter.className}>
-        <TopNav />
-        <ProgressBar />
-        <GlobalProvider>{children}</GlobalProvider>
+        <GlobalProvider>
+          <TopNav />
+          <ProgressBar />
+          {children}
+        </GlobalProvider>
       </body>
     </html>
   );

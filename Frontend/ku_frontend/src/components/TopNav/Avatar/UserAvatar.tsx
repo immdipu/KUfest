@@ -53,23 +53,23 @@ const UserAvatar = () => {
       <section
         ref={modal}
         className={clsx(
-          "absolute duration-150 ease-in-out transition-all overflow-hidden select-none w-40 right-0 bottom-0 0 top-12 rounded-md  bg-neutral-800  ",
+          "absolute duration-150 ease-in-out transition-all z-40 overflow-hidden select-none w-40 right-0 bottom-0 0 top-12 rounded-md  bg-neutral-800  ",
           showModal ? "h-40 py-2" : "h-0 py-0"
         )}
       >
         <ul className="flex flex-col gap-1">
           <li className="flex justify-center items-center gap-5 transition-colors duration-200 ease-linear px-4 py-2">
-            <span className="text-sm font-light text-center">
+            <span className=" text-white font-medium text-lg  text-center">
               {user.fullName}
             </span>
           </li>
 
           <Link
             href={`/profile/${user.username}`}
-            className="flex  items-center gap-5 hover:bg-black transition-colors duration-200 ease-linear  px-4 py-2"
+            className="flex  items-center gap-5  hover:bg-black transition-colors duration-200 ease-linear  px-4 py-2"
           >
             <BsPersonSquare className="text-neutral-400 text-xl" />
-            <span className="text-sm">Account</span>
+            <span className="text-sm text-white">Account</span>
           </Link>
           <li
             onClick={() => {
@@ -78,7 +78,7 @@ const UserAvatar = () => {
             className="flex items-center gap-5 hover:bg-black transition-colors duration-200 ease-linear cursor-pointer px-4 py-2"
           >
             <IoLogOut className="text-neutral-400 text-2xl" />
-            <span className="text-sm">Log out</span>
+            <span className="text-sm text-neutral-200">Log out</span>
           </li>
         </ul>
       </section>
