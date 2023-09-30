@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { useEffect, useState } from "react";
 import Register from "@/components/login/Register/Register";
@@ -15,6 +16,12 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      router.push("/");
+    }
+  }, []);
+
   const LogIn = useMutation((data: any) => userApis.Login(data), {
     onSuccess: (data) => {
       console.log(data);
@@ -23,11 +30,7 @@ const Login = () => {
       router.push("/");
     },
     onError: (data: any) => {
-      if (data.response.data) {
-        toast.error(data.response.data);
-      } else {
-        toast.error("Login failed  Try Again!");
-      }
+      toast.error("Login failed  Try Again!");
     },
   });
 
@@ -39,13 +42,6 @@ const Login = () => {
     };
     LogIn.mutate(data);
   };
-
-  useEffect(() => {
-    return () => {
-      setEmail("");
-      setPassword("");
-    };
-  });
 
   return (
     <>

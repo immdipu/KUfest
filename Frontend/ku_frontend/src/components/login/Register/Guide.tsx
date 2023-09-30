@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useMutation } from "@tanstack/react-query";
@@ -31,8 +32,9 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { GuideForm } from "@/types/UserForm";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { LoggedIn } from "@/redux/slice/authSlice";
+import { useRouter } from "next/navigation";
 
 interface Props {
   value: string;
@@ -62,6 +64,8 @@ const Guides = () => {
   const [languages, setLanguages] = useState<Props[]>([]);
   const [Guidesform, setGuidesform] = useState<GuideForm>(initialUserForm);
   const dispatch = useAppDispatch();
+  const router = useRouter();
+  const user = useAppSelector((state) => state.auth);
 
   const handleSelectChange = (e: any) => {
     setLanguages(e);
@@ -69,10 +73,10 @@ const Guides = () => {
 
   const Signup = useMutation((data: any) => userApis.signUp(data), {
     onSuccess: (data) => {
-      console.log(data);
       toast.success("Account created successfully");
       dispatch(LoggedIn(data));
       localStorage.setItem("data", JSON.stringify(data));
+      router.push("/");
     },
     onError: (data: any) => {
       toast.error("Sign up failed ");
@@ -107,6 +111,12 @@ const Guides = () => {
     });
     Signup.mutate(Guidesform);
   };
+
+  useEffect(() => {
+    if (user.isUserAuthenticated) {
+      router.push("/");
+    }
+  }, [user.isUserAuthenticated]);
 
   return (
     <div>
