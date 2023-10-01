@@ -64,7 +64,7 @@ const TopNav = () => {
             href={"/"}
             className="   text-neutral-900 font-bold text-xl px-5  py-2 rounded-full "
           >
-              <img src="/assests/logo.jpg" alt="img" className=" img-blend w-30 h-10"/>
+              <img src="/assests/logo.png" alt="img" className=" img-blend w-30 h-10"/>
           </Link>
         </div>
         <div className="flex border-2  flex-1 justify-center">
